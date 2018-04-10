@@ -54,7 +54,8 @@ public class Cabin extends Thread {
     public void executeStopped() throws InterruptedException {
         System.out.println("Stopped");
         cabinState = States.CabinStates.Stopped;
-        
+        this.suspend();
+
     }
 
     public Cabin (int id){
