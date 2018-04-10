@@ -1,8 +1,11 @@
 public class States {
 
-    enum cabinStates{
+    enum CabinStates {
         UP,
         Down,
-        Ideal
+        Ideal,
+        Stopped,
+        LoadUnload
     }
+
 }
