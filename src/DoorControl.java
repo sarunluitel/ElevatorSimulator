@@ -8,9 +8,9 @@ public class DoorControl extends Thread {
         ArrayList request = new ArrayList<Integer>();
     }
 
-    public boolean getOpenState() {return this.openState;}
+    public synchronized boolean getOpenState() {return this.openState;}
 
-    public void open() throws InterruptedException {
+    public synchronized void open() throws InterruptedException {
         openState = true;
         System.out.println("Door Opened");
         Thread.sleep(4000);
@@ -19,7 +19,7 @@ public class DoorControl extends Thread {
     }
 
     @Override
-    public void run() {
+    public synchronized void run() {
         try {
             open();
         } catch (InterruptedException e) {
