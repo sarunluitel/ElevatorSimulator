@@ -47,6 +47,7 @@ public class BuildingControl {
 
        while (true){
            if (stoppedCabin(0)){
+
                System.out.println("building Control detected stopped cabin");
                openDoor(cabins[0].getCurrentFloor()-1,0);
                cabins[0].setCabinState(States.CabinStates.LoadUnload);
