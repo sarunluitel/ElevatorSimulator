@@ -7,7 +7,8 @@ public class BuildingControl {
     ArrayList<Integer> notifyList;
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException
+    {
         BuildingControl b = new BuildingControl();
 	    b.run();
     }
@@ -36,19 +37,21 @@ public class BuildingControl {
 
 
 
-    private  void run(){
+    private  void run() throws InterruptedException
+    {
         initialize();
        cabins[0] = new Cabin(1);
-       cabins[0].addStop(5);
+       cabins[0].addStop(7);
        cabins[0].addStop(6);
        cabins[0].addStop(7);
 
        doors[2][0] = new DoorControl();
 
        while (true){
-           if (stoppedCabin(0)){
+         Thread.sleep(1);
+         if (stoppedCabin(0)){
 
-               System.out.println("building Control detected stopped cabin");
+             System.out.println("building Control detected stopped cabin");
                openDoor(cabins[0].getCurrentFloor()-1,0);
                cabins[0].setCabinState(States.CabinStates.LoadUnload);
                notifyList.add (0);
@@ -57,7 +60,7 @@ public class BuildingControl {
            while (!notifyList.isEmpty()){
                for (Integer id : notifyList){
                    if (!doors[cabins[id].getCurrentFloor()-1][id].getOpenState()) {
-                       cabins[id].resume();
+                       cabins[id].notify();
                        notifyList.remove((Integer) id);
                    }
 
