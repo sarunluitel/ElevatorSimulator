@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Cabin extends Thread {
 
     private int id ;
-    private States.cabinStates cabinState;
+    private States.CabinStates cabinState;
     private ArrayList request = new ArrayList<Integer>();
     private int currentFloor;
     @Override
@@ -27,13 +27,18 @@ public class Cabin extends Thread {
                 }
             }
 
-            cabinState = States.cabinStates.Ideal;
+            cabinState = States.CabinStates.Ideal;
 
     }
 
+    public States.CabinStates getCabinState() {return this.cabinState;}
+    public void setCabinState(States.CabinStates newState) { this.cabinState = newState;}
+
+    public int getCurrentFloor() {return this.currentFloor;}
+
     public void move() throws InterruptedException {
         System.out.println("moving");
-        if (cabinState == States.cabinStates.UP) {
+        if (cabinState == States.CabinStates.UP) {
             this.sleep(500);
             this.currentFloor++;
         }
@@ -48,20 +53,21 @@ public class Cabin extends Thread {
 
     public void executeStopped() throws InterruptedException {
         System.out.println("Stopped");
-        this.wait();
+        cabinState = States.CabinStates.Stopped;
+        
     }
 
     public Cabin (int id){
         this.id = id;
-        this.cabinState = States.cabinStates.Ideal;
+        this.cabinState = States.CabinStates.Ideal;
         this.currentFloor = 1;
     }
 
     void addStop (int floorNo){
         request.add(floorNo);
-        if (cabinState == States.cabinStates.Ideal) {
-            if (currentFloor < floorNo) cabinState = States.cabinStates.UP;
-            else cabinState = States.cabinStates.Down;
+        if (cabinState == States.CabinStates.Ideal) {
+            if (currentFloor < floorNo) cabinState = States.CabinStates.UP;
+            else cabinState = States.CabinStates.Down;
             this.start();
         }
 
