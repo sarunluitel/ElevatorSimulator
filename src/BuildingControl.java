@@ -21,6 +21,7 @@ public class BuildingControl {
 
     boolean stoppedCabin(int id){
         if (cabins[id].getCabinState()== States.CabinStates.Stopped) return true;
+
         return false;
     }
 
