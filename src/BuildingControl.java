@@ -16,6 +16,7 @@ public class BuildingControl {
        cabins[0].addStop(5);
        cabins[0].addStop(6);
        cabins[0].addStop(3);
+
        cabins[0].addStop(7);
        
     }
