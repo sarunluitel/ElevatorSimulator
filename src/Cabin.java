@@ -7,7 +7,7 @@ public class Cabin extends Thread {
     private ArrayList request = new ArrayList<Integer>();
     private int currentFloor;
     @Override
-    public void run() {
+    public synchronized void run() {
 
             while (!request.isEmpty()){
                 System.out.println("Cabin " + id + " is at Floor no " + currentFloor);
@@ -32,11 +32,11 @@ public class Cabin extends Thread {
     }
 
     public States.CabinStates getCabinState() {return this.cabinState;}
-    public void setCabinState(States.CabinStates newState) { this.cabinState = newState;}
+    public synchronized void setCabinState(States.CabinStates newState) { this.cabinState = newState;}
 
-    public int getCurrentFloor() {return this.currentFloor;}
+    public synchronized int getCurrentFloor() {return this.currentFloor;}
 
-    public void move() throws InterruptedException {
+    public synchronized void move() throws InterruptedException {
         System.out.println("moving");
         if (cabinState == States.CabinStates.UP) {
             this.sleep(500);
@@ -51,20 +51,20 @@ public class Cabin extends Thread {
         System.out.println("moved");
     }
 
-    public void executeStopped() throws InterruptedException {
+    public synchronized void executeStopped() throws InterruptedException {
         System.out.println("Stopped");
         cabinState = States.CabinStates.Stopped;
         this.suspend();
 
     }
 
-    public Cabin (int id){
+    public  Cabin (int id){
         this.id = id;
         this.cabinState = States.CabinStates.Ideal;
         this.currentFloor = 1;
     }
 
-    void addStop (int floorNo){
+  synchronized void addStop (int floorNo){
         request.add(floorNo);
         if (cabinState == States.CabinStates.Ideal) {
             if (currentFloor < floorNo) cabinState = States.CabinStates.UP;
