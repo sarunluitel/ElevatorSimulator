@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class GUI extends Application {
-    public void instantiate(String[] args){
+    void instantiate(String[] args){
     launch(args);
     }
 
