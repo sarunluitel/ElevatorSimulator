@@ -2,15 +2,21 @@ import java.util.ArrayList;
 
 public class DoorControl extends Thread {
     private boolean openState;
+    private volatile boolean isStopped;
 
     public DoorControl (){
         openState = false;
+        isStopped = false;
         ArrayList request = new ArrayList<Integer>();
     }
 
-    public  boolean getOpenState() {return this.openState;}
+    public synchronized void  changeStoppedState(){
+        isStopped = !isStopped;
+    }
 
-    public  void open() throws InterruptedException {
+    public synchronized boolean getOpenState() {return this.openState;}
+
+    public synchronized void open() throws InterruptedException {
         openState = true;
         System.out.println("Door Opened");
         Thread.sleep(4000);
@@ -20,10 +26,20 @@ public class DoorControl extends Thread {
 
     @Override
     public  void run() {
-        try {
-            open();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        while (true){
+            if (isStopped) {
+                try {
+                    synchronized (this){
+                        open();
+                        changeStoppedState();
+                        notify();
+                    }
+
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
