@@ -47,6 +47,13 @@ public class BuildingControl extends Thread {
         cabins[0].addStop(6);
         cabins[0].addStop(7);
 
+        cabins[1] = new Cabin(25);
+        cabins[1].start();
+
+        cabins[1].addStop(5);
+        cabins[1].addStop(6);
+        cabins[1].addStop(7);
+
         System.out.println("added everything");
 
 

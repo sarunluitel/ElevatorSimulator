@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI">
+   <children>
+      <Pane layoutX="101.0" layoutY="23.0" prefHeight="1036.0" prefWidth="796.0" style="-fx-background-color: #D6DBDF;">
+         <children>
+            <Line endX="360.0" layoutX="384.0" layoutY="1021.0" startX="-250.0" />
+            <Line endX="360.0" layoutX="384.0" layoutY="921.0" startX="-250.0" />
+            <Line endX="360.0" layoutX="384.0" layoutY="821.0" startX="-250.0" />
+            <Line endX="360.0" layoutX="384.0" layoutY="721.0" startX="-250.0" />
+            <Line endX="360.0" layoutX="384.0" layoutY="621.0" startX="-250.0" />
+            <Line endX="360.0" layoutX="384.0" layoutY="521.0" startX="-250.0" />
+            <Line endX="360.0" layoutX="384.0" layoutY="421.0" startX="-250.0" />
+            <Line endX="360.0" layoutX="384.0" layoutY="321.0" startX="-250.0" />
+            <Line endX="360.0" layoutX="384.0" layoutY="221.0" startX="-250.0" />
+            <Line endX="360.0" layoutX="384.0" layoutY="121.0" startX="-250.0" />
+            <ProgressBar layoutX="205.0" layoutY="941.0" prefHeight="80.0" prefWidth="53.0" progress="0.0" />
+            <ProgressBar layoutX="339.0" layoutY="941.0" prefHeight="80.0" prefWidth="53.0" progress="0.0" />
+            <ProgressBar layoutX="476.0" layoutY="941.0" prefHeight="80.0" prefWidth="53.0" progress="0.0" />
+            <ProgressBar layoutX="614.0" layoutY="941.0" prefHeight="80.0" prefWidth="53.0" progress="0.0" />
+            <Button layoutX="48.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="22.0" layoutY="201.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="66.0" layoutY="201.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="22.0" layoutY="302.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="66.0" layoutY="302.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="22.0" layoutY="402.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="66.0" layoutY="402.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="22.0" layoutY="499.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="66.0" layoutY="499.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="22.0" layoutY="601.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="66.0" layoutY="601.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="22.0" layoutY="702.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="66.0" layoutY="702.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="22.0" layoutY="802.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="66.0" layoutY="802.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="22.0" layoutY="902.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="66.0" layoutY="902.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="41.0" layoutY="981.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane layoutX="996.0" layoutY="599.0" prefHeight="460.0" prefWidth="356.0" style="-fx-background-color: #EBEDEF;">
+         <children>
+            <Button layoutX="29.0" layoutY="64.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="1">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="134.0" layoutY="64.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="2">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="248.0" layoutY="64.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="3">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="134.0" layoutY="357.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="193.0" style="-fx-background-radius: 100;" text="Key">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="29.0" layoutY="164.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="4">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="134.0" layoutY="164.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="5">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="248.0" layoutY="164.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="6">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="29.0" layoutY="261.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="7">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="134.0" layoutY="261.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="8">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="248.0" layoutY="261.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="9">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="29.0" layoutY="357.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="10">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Text layoutX="70.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cabin Control Elv X">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="996.0" layoutY="34.0" prefHeight="545.0" prefWidth="809.0" style="-fx-background-color: #D6DBDF;">
+         <children>
+            <RadioButton layoutX="31.0" layoutY="56.0" mnemonicParsing="false" selected="true" text="Elevator 1" />
+            <RadioButton layoutX="147.0" layoutY="56.0" mnemonicParsing="false" text="Elevator 2" />
+            <RadioButton layoutX="242.0" layoutY="56.0" mnemonicParsing="false" text="Elevator 3" />
+            <RadioButton layoutX="332.0" layoutY="56.0" mnemonicParsing="false" text="Elevator 4" />
+            <TextArea layoutX="503.0" layoutY="112.0" prefHeight="111.0" prefWidth="275.0" text="Floor:  X&#10;Door Status: Closed ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextArea>
+            <Text layoutX="569.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+            <Pane layoutX="49.0" layoutY="105.0" prefHeight="398.0" prefWidth="356.0" style="-fx-background-color: #EBEDEF;">
+               <children>
+                  <Button layoutX="29.0" layoutY="20.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="1">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="134.0" layoutY="20.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="2">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="248.0" layoutY="20.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="3">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="134.0" layoutY="313.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="193.0" style="-fx-background-radius: 100;" text="Key">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="29.0" layoutY="120.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="4">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="134.0" layoutY="120.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="5">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="248.0" layoutY="120.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="6">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="29.0" layoutY="217.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="7">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="134.0" layoutY="217.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="8">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="248.0" layoutY="217.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="9">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="29.0" layoutY="313.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" style="-fx-background-radius: 100;" text="10">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Text layoutX="330.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Control Panel">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
