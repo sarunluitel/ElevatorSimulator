@@ -8,8 +8,10 @@ public class BuildingControl extends Thread {
 
 
     public static void main(String[] args) throws InterruptedException {
+        GUI g = new GUI();
+        g.instantiate(args);
         BuildingControl b = new BuildingControl();
-	    b.start();
+	   // b.start();
     }
 
 
