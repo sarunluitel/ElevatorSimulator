@@ -6,16 +6,20 @@ public class Cabin extends Thread {
     private States.CabinStates cabinState;
     private ArrayList request = new ArrayList<Integer>();
     private int currentFloor;
+    boolean busy = false;
+    private DoorControl door;
     @Override
-    public synchronized void run() {
-
+    public  void run() {
+        System.out.println("Cabin " + id + " is at Floor no " + currentFloor);
+        while (true){
+            if (!request.isEmpty()) changeState();
             while (!request.isEmpty()){
-                System.out.println("Cabin " + id + " is at Floor no " + currentFloor);
                 try {
                     move();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                System.out.println("Cabin " + id + " is at Floor no " + currentFloor);
                 if (request.contains(currentFloor)){
                     System.out.println("going to stop now");
                     try {
@@ -25,36 +29,53 @@ public class Cabin extends Thread {
                     }
                     request.remove((Integer) currentFloor);
                 }
+
+            }
+            if (cabinState != States.CabinStates.Ideal){
+                cabinState = States.CabinStates.Ideal;
+                System.out.println("Cabin " + id + " is ideal now");
             }
 
-            cabinState = States.CabinStates.Ideal;
+        }
+
+
 
     }
 
+    private void changeState(){
+        if ((int)request.get(0) > currentFloor) this.cabinState = States.CabinStates.UP;
+        else this.cabinState = States.CabinStates.Down;
+    }
+
+
     public States.CabinStates getCabinState() {return this.cabinState;}
-    public synchronized void setCabinState(States.CabinStates newState) { this.cabinState = newState;}
+    public  void setCabinState(States.CabinStates newState) { this.cabinState = newState;}
 
-    public synchronized int getCurrentFloor() {return this.currentFloor;}
+    public  int getCurrentFloor() {return this.currentFloor;}
 
-    public synchronized void move() throws InterruptedException {
-        System.out.println("moving");
+    public  void move() throws InterruptedException {
+
         if (cabinState == States.CabinStates.UP) {
             this.sleep(500);
             this.currentFloor++;
         }
 
         else {
-            Thread.sleep(500);
+            this.sleep(500);
             this.currentFloor--;
         }
 
-        System.out.println("moved");
+
     }
 
-    public synchronized void executeStopped() throws InterruptedException {
-        System.out.println("Stopped");
-        cabinState = States.CabinStates.Stopped;
-        this.suspend();
+    public  void executeStopped() throws InterruptedException {
+
+        System.out.println("Stopped Cabin " + id + "at floor " + getCurrentFloor());
+        synchronized (door){
+            door.changeStoppedState();
+            door.wait();
+        }
+
 
     }
 
@@ -62,15 +83,13 @@ public class Cabin extends Thread {
         this.id = id;
         this.cabinState = States.CabinStates.Ideal;
         this.currentFloor = 1;
+        this.door = new DoorControl();
+        door.start();
     }
 
-  synchronized void addStop (int floorNo){
+   void addStop (int floorNo){
         request.add(floorNo);
-        if (cabinState == States.CabinStates.Ideal) {
-            if (currentFloor < floorNo) cabinState = States.CabinStates.UP;
-            else cabinState = States.CabinStates.Down;
-            this.start();
-        }
+
 
     }
 }

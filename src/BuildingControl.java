@@ -1,16 +1,18 @@
 import java.util.ArrayList;
 
-public class BuildingControl {
+public class BuildingControl extends Thread {
 
     Cabin[] cabins;
     DoorControl[][] doors;
     ArrayList<Integer> notifyList;
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         BuildingControl b = new BuildingControl();
-	    b.run();
+	    b.start();
     }
+
+
 
     public void initialize(){
         cabins = new Cabin[2];
@@ -35,35 +37,19 @@ public class BuildingControl {
 
 
 
-
-    private  void run(){
+    @Override
+    public void run()  {
         initialize();
-       cabins[0] = new Cabin(1);
-       cabins[0].addStop(5);
-       cabins[0].addStop(6);
-       cabins[0].addStop(7);
+        cabins[0] = new Cabin(1);
+        cabins[0].start();
 
-       doors[2][0] = new DoorControl();
+        cabins[0].addStop(5);
+        cabins[0].addStop(6);
+        cabins[0].addStop(7);
 
-       while (true){
-           if (stoppedCabin(0)){
+        System.out.println("added everything");
 
-               System.out.println("building Control detected stopped cabin");
-               openDoor(cabins[0].getCurrentFloor()-1,0);
-               cabins[0].setCabinState(States.CabinStates.LoadUnload);
-               notifyList.add (0);
-           }
 
-           while (!notifyList.isEmpty()){
-               for (Integer id : notifyList){
-                   if (!doors[cabins[id].getCurrentFloor()-1][id].getOpenState()) {
-                       cabins[id].resume();
-                       notifyList.remove((Integer) id);
-                   }
-
-               }
-           }
-        }
 
 
 
