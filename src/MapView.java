@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class MapView {
     private static MapView mapView = null;
     Cabin[] cabins;
@@ -13,9 +11,6 @@ public class MapView {
 
     void setElevators(Cabin[] a) {
         this.cabins= a;
-        System.out.println(this.cabins[2].getcabinId()*1000000);
-
-
     }
 
     public Cabin[] getElevators() {

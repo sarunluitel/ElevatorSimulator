@@ -34,10 +34,6 @@ public class BuildingControl extends Thread {
         }
         notifyList = new ArrayList<Integer>();
 
-
-
-
-
     }
 
     boolean stoppedCabin(int id) {
@@ -52,7 +48,7 @@ public class BuildingControl extends Thread {
 
     @Override
     public void run() {
-        //Cabin ID has to be 1,2,3,4. GUI uses this to recognize the cabins.
+        //Cabin ID has to be 0,1,2,3. GUI uses this to recognize the cabins.
         initialize();
 
 
@@ -85,8 +81,6 @@ public class BuildingControl extends Thread {
 
         System.out.println("added everything");
 
-
     }
-
 
 }
