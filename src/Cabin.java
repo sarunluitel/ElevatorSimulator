@@ -5,9 +5,14 @@ public class Cabin extends Thread {
     private int id ;
     private States.CabinStates cabinState;
     private ArrayList request = new ArrayList<Integer>();
-    private int currentFloor;
+    private int currentFloor=0;
     boolean busy = false;
     private DoorControl door;
+
+    public int getcabinId() {
+        return id;
+    }
+
     @Override
     public  void run() {
         System.out.println("Cabin " + id + " is at Floor no " + currentFloor);
@@ -57,12 +62,13 @@ public class Cabin extends Thread {
 
         if (cabinState == States.CabinStates.UP) {
             this.sleep(500);
-            this.currentFloor++;
+            System.out.println("changing current floor");
+            this.currentFloor ++;
         }
 
         else {
             this.sleep(500);
-            this.currentFloor--;
+            this.currentFloor --;
         }
 
 
