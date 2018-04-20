@@ -3,9 +3,10 @@ import java.util.ArrayList;
 public class DoorControl extends Thread {
     private boolean openState;
     private volatile boolean isStopped;
+    private boolean isDoorOpen;
 
     public DoorControl (){
-        openState = false;
+        isDoorOpen =false;
         isStopped = false;
         ArrayList request = new ArrayList<Integer>();
     }
@@ -14,20 +15,23 @@ public class DoorControl extends Thread {
         isStopped = !isStopped;
     }
 
-    public synchronized boolean getOpenState() {return this.openState;}
+    public synchronized boolean getOpenState() {return this.isStopped;}
+
+    public  boolean getisDoorOpen() {return this.isStopped;}
 
     public synchronized void open() throws InterruptedException {
-        openState = true;
+
         System.out.println("Door Opened");
         Thread.sleep(4000);
+
         System.out.println("Door Closed");
-        openState = false;
     }
 
     @Override
     public  void run() {
         while (true){
             if (isStopped) {
+                isDoorOpen=true;
                 try {
                     synchronized (this){
                         open();

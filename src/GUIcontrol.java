@@ -22,8 +22,6 @@ public class GUIcontrol extends AnimationTimer {
         }
         this.start();
 
-
-
     }
 
     @Override
@@ -31,10 +29,16 @@ public class GUIcontrol extends AnimationTimer {
         if (now - lastUpdate >= 8_333_333) // force 60fps in all machines.
         {
             for (Cabin c : cabins) {
-                System.out.println(c.getcabinId());
                 if (c.getcabinId() == 0) {
                     int floor = c.getCurrentFloor();
                     elev1.setLayoutY(1000 - (floor * 100));
+
+                    if (c.door.getisDoorOpen()) {
+                        elev1.setProgress(0);
+                    } else {
+                        elev1.setProgress(1);
+                    }
+
                 }
 
                 if (c.getcabinId() == 1) {

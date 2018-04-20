@@ -7,7 +7,7 @@ public class Cabin extends Thread {
     private ArrayList request = new ArrayList<Integer>();
     private int currentFloor=0;
     boolean busy = false;
-    private DoorControl door;
+    DoorControl door;
 
     public int getcabinId() {
         return id;
