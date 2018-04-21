@@ -23,7 +23,7 @@ public class GUIcontrol extends AnimationTimer
 
     while (this.cabins == null)
     {
-      this.cabins = MapView.getInstance().cabins;
+      this.cabins = MapView.getInstance().getElevators();
     }
     selectedCabin[0]= rbCab0;
     selectedCabin[1]= rbCab1;
