@@ -8,7 +8,7 @@ public class Motion{
      * then it deaccelerates with the same negative aceeleration as first part
      */
 
-    public final double FLOOR_HEIGHT = 10; // height of floor in feet
+    public final double FLOOR_HEIGHT = 7; // height of floor in feet
     public final double MAX_SPEED = 0.17; // the maximum speed (in ft/s) upto which cabin accelerates
     public final double TIME_FOR_MAXSPEED = 3; // time taken by cabin to reach max speed from rest in seconds.
 

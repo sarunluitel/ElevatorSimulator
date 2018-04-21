@@ -1,6 +1,7 @@
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.RadioButton;
 
 
 public class GUIcontrol extends AnimationTimer
@@ -8,7 +9,11 @@ public class GUIcontrol extends AnimationTimer
   @FXML
   ProgressBar elev0, elev1, elev2, elev3;
 
+  @FXML
+    RadioButton rbCab0,rbCab1,rbCab2,rbCab3;
+
   private Cabin[] cabins;
+    private RadioButton[] selectedCabin = new RadioButton[4];
   private long lastUpdate = 0;
 
   @FXML
@@ -20,6 +25,11 @@ public class GUIcontrol extends AnimationTimer
     {
       this.cabins = MapView.getInstance().cabins;
     }
+    selectedCabin[0]= rbCab0;
+    selectedCabin[1]= rbCab1;
+    selectedCabin[2]= rbCab2;
+    selectedCabin[3]= rbCab3;
+    MapView.getInstance().setSelectedCabin(selectedCabin);
     this.start();
 
   }
@@ -27,7 +37,7 @@ public class GUIcontrol extends AnimationTimer
   private void updateCabin(Cabin cabin, ProgressBar elev)
   {
     int floor = cabin.getCurrentFloor();
-    elev.setLayoutY(1000 - (floor * 100));
+    elev.setLayoutY(710- (floor * 70));
 
     if (cabin.door.getisDoorOpen())
     {

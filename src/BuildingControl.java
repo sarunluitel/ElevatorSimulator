@@ -59,25 +59,26 @@ public class BuildingControl extends Thread {
         cabins[0].addStop(7);
 
 
-        cabins[1].start();
 
-        cabins[1].addStop(2);
-        cabins[1].addStop(4);
-        cabins[1].addStop(6);
-
-
-        cabins[2].start();
-
-        cabins[2].addStop(2);
-        cabins[2].addStop(6);
-        cabins[2].addStop(9);
-
-
-        cabins[3].start();
-
-        cabins[3].addStop(1);
-        cabins[3].addStop(3);
-        cabins[3].addStop(4);
+//        cabins[1].start();
+//
+//        cabins[1].addStop(2);
+//        cabins[1].addStop(4);
+//        cabins[1].addStop(6);
+//
+//
+//        cabins[2].start();
+//
+//        cabins[2].addStop(2);
+//        cabins[2].addStop(6);
+//        cabins[2].addStop(9);
+//
+//
+//        cabins[3].start();
+//
+//        cabins[3].addStop(1);
+//        cabins[3].addStop(3);
+//        cabins[3].addStop(4);
 
         System.out.println("added everything");
 

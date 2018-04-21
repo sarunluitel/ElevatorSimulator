@@ -1,5 +1,8 @@
+import javafx.scene.control.RadioButton;
+
 public class MapView {
     private static MapView mapView = null;
+    private RadioButton[] selectedCabin;
     Cabin[] cabins;
 
     private MapView() {
@@ -15,6 +18,16 @@ public class MapView {
 
     public Cabin[] getElevators() {
         return this.cabins;
+    }
+
+    public void setSelectedCabin(RadioButton[] a){ this.selectedCabin =a;}
+
+
+    public int getSelectedCabin(){
+        for (int i = 0; i < 4; i++) {
+            if(selectedCabin[i].selectedProperty().get()) return i;
+        }
+        return -1;
     }
 }
 
