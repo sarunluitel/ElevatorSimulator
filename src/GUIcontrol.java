@@ -34,6 +34,11 @@ public class GUIcontrol extends AnimationTimer
 
   }
 
+  @FXML
+  private void requests(){
+      MapView.getInstance().setRequests();
+  }
+
   private void updateCabin(Cabin cabin, ProgressBar elev)
   {
     int floor = cabin.getCurrentFloor();

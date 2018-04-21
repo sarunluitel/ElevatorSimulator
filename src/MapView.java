@@ -3,6 +3,7 @@ import javafx.scene.control.RadioButton;
 public class MapView {
     private static MapView mapView = null;
     private RadioButton[] selectedCabin;
+    private
     Cabin[] cabins;
 
     private MapView() {
@@ -12,6 +13,9 @@ public class MapView {
         return mapView;
     }
 
+    void setRequests(){
+
+    }
     void setElevators(Cabin[] a) {
         this.cabins= a;
     }
