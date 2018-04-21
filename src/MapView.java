@@ -14,6 +14,7 @@ public class MapView {
     }
 
     void setRequests(){
+        // code to make requesats in order
 
     }
     void setElevators(Cabin[] a) {
