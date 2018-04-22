@@ -7,6 +7,7 @@ public class MapView
   private volatile int[] floorRequest = null;
   volatile Cabin[] cabins;
   private boolean DEBUG = true;
+  private int cabinfloorRequest;
 
   private MapView()
   {
@@ -26,7 +27,8 @@ public class MapView
     this.floorRequest = req;
   }
 
-  int[] getFloorRequests (){
+  int[] getFloorRequests()
+  {
     // returns array [floor,direction] -1 for down, +1 for up. floor in int.
     int[] a = this.floorRequest;
     this.floorRequest = null;
@@ -60,6 +62,18 @@ public class MapView
       if (selectedCabin[i].selectedProperty().get()) return i;
     }
     return -1; // code should never get to here.
+  }
+
+  void setCabinFloorRequest(int a)
+  {
+    this.cabinfloorRequest = a;
+  }
+
+  int[] getCabinFloorRequest()
+  {
+    int[] a = {this.cabinfloorRequest, this.getSelectedCabin()};
+    this.cabinfloorRequest = -1;
+    return a;
   }
 }
 

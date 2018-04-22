@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIcontrol">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIcontrol">
    <children>
       <Pane layoutX="41.0" layoutY="12.0" prefHeight="700.0" prefWidth="581.0" style="-fx-background-color: #D6DBDF;">
          <children>
@@ -208,17 +208,17 @@
       </Pane>
       <Pane layoutX="720.0" layoutY="423.0" prefHeight="288.0" prefWidth="238.0" style="-fx-background-color: #EBEDEF;">
          <children>
-            <Button fx:id="btnCab1" layoutX="29.0" layoutY="36.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="1">
+            <Button fx:id="btnCab01" layoutX="29.0" layoutY="36.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="1">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCab2" layoutX="97.0" layoutY="36.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="2">
+            <Button fx:id="bthCab02" layoutX="97.0" layoutY="36.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="2">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCab3" layoutX="159.0" layoutY="36.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="3">
+            <Button fx:id="bthCab03" layoutX="159.0" layoutY="36.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="3">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -228,37 +228,37 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCab4" layoutX="29.0" layoutY="96.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="4">
+            <Button fx:id="bthCab04" layoutX="29.0" layoutY="96.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="4">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCab5" layoutX="97.0" layoutY="96.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="5">
+            <Button fx:id="bthCab05" layoutX="97.0" layoutY="96.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="5">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCab6" layoutX="159.0" layoutY="96.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="6">
+            <Button fx:id="bthCab06" layoutX="159.0" layoutY="96.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="6">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCab7" layoutX="29.0" layoutY="164.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="7">
+            <Button fx:id="bthCab07" layoutX="29.0" layoutY="164.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="7">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCab8" layoutX="97.0" layoutY="164.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="8">
+            <Button fx:id="bthCab08" layoutX="97.0" layoutY="164.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="8">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCab9" layoutX="159.0" layoutY="164.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="9">
+            <Button fx:id="bthCab09" layoutX="159.0" layoutY="164.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="9">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCab10" layoutX="29.0" layoutY="223.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="68.0" style="-fx-background-radius: 100;" text="10">
+            <Button fx:id="bthCab10" layoutX="29.0" layoutY="223.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="51.0" prefWidth="68.0" style="-fx-background-radius: 100;" text="10">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

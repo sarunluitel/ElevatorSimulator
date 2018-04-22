@@ -60,6 +60,14 @@ public class GUIcontrol extends AnimationTimer
     MapView.getInstance().setFloorRequests(a);
   }
 
+  @FXML
+  private void cabinFlorRequest(Event e){
+    Button pressed = (Button) e.getSource();
+
+    int floor = Integer.parseInt(pressed.getId().substring(6));
+    MapView.getInstance().setCabinFloorRequest(floor);
+  }
+
   private void updateCabin(Cabin cabin, ProgressBar elev)
   {
     int floor = cabin.getCurrentFloor();

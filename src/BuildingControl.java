@@ -73,14 +73,15 @@ public class BuildingControl extends Thread
     {
       public void run()
       {
-        int[] a = MapView.getInstance().getFloorRequests();
-        if (a!=null )System.out.println("flooe  "+a[0]);
+        int[] a = MapView.getInstance().getCabinFloorRequest();
+        if (a!=null && a[0]!=-1)System.out.println("floor  "+a[0] + " cabin ID"+a[1]);
+
       }
     }
 
 // And From your main() method or any other method
     Timer timer = new Timer();
-    timer.schedule(new SayHello(), 0, 500);
+    timer.schedule(new SayHello(), 5000, 100);
 
 
   }
