@@ -54,13 +54,43 @@ public class BuildingControl extends Thread
     doors[floor][id].start();
   }
 
+  int handdleRequest (int[] request){
+    int bestDistance =11;
+    int id = -1;
+    int temp;
+    for (int i = 0; i < cabins.length ; i++){
+      temp = validateCabin(request,i);
+      System.out.println("Best Distance for cabin " + i + "  floor : " + request[0] + " is " + temp + " cabin is at "+ cabins[i].getCurrentFloor());
+      if (temp < bestDistance){
+        bestDistance = temp;
+        id = i;
+      }
+    }
+    System.out.println(id);
+    return id;
+  }
+
+  int validateCabin (int[] request, int cabinId){
+    States.CabinStates currentState = cabins[cabinId].getCabinState();
+    int currentFloor = cabins[cabinId].getCurrentFloor();
+    if (!(currentState == States.CabinStates.Ideal)) {
+      if (request[1] > 0) {
+        if (currentState == States.CabinStates.Down) return 100;
+      }
+      if (request[1] < 0) {
+        if (currentState == States.CabinStates.UP) return 100;
+      }
+    }
+    return Math.abs(request[0] - currentFloor);
+  }
+
 
   @Override
   public void run()
   {
     //Cabin ID has to be 0,1,2,3. GUI uses this to recognize the cabins.
     initialize();
-
+    cabins[0].start();
     cabins[1].start();
     cabins[2].start();
     cabins[3].start();
@@ -74,7 +104,14 @@ public class BuildingControl extends Thread
       public void run()
       {
         int[] a = MapView.getInstance().getFloorRequests();
-        if (a!=null )System.out.println("flooe  "+a[0]);
+        if (a!=null ){
+          System.out.println("floor  "+a[0]);
+          int id = handdleRequest(a);
+          if (id>=0){
+            cabins[id].addStop(a[0]);
+          }
+        }
+
       }
     }
 

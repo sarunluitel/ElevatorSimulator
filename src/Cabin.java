@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Cabin extends Thread {
 
@@ -15,33 +17,40 @@ public class Cabin extends Thread {
 
     @Override
     public  void run() {
-        System.out.println("Cabin " + id + " is at Floor no " + currentFloor);
-        while (true){
-            if (!request.isEmpty()) changeState();
-            while (!request.isEmpty()){
-                try {
-                    move();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.println("Cabin " + id + " is at Floor no " + currentFloor);
-                if (request.contains(currentFloor)){
-                    System.out.println("going to stop now");
+
+
+        class SayHello extends TimerTask
+        {
+            public void run()
+            {
+                if (!request.isEmpty()) changeState();
+                while (!request.isEmpty()) {
                     try {
-                        executeStopped();
+                        move();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    request.remove((Integer) currentFloor);
+                    if (request.contains(currentFloor)) {
+                        try {
+                            executeStopped();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                    if (cabinState != States.CabinStates.Ideal){
+                        cabinState = States.CabinStates.Ideal;
+                        System.out.println("Cabin " + id + " is ideal now");
+                    }
+
                 }
 
             }
-            if (cabinState != States.CabinStates.Ideal){
-                cabinState = States.CabinStates.Ideal;
-                System.out.println("Cabin " + id + " is ideal now");
-            }
 
-        }
+
+// And From your main() method or any other method
+        Timer timer = new Timer();
+        timer.schedule(new SayHello(), 0, 500);
 
 
 
@@ -81,6 +90,7 @@ public class Cabin extends Thread {
             door.changeStoppedState();
             door.wait();
         }
+        request.remove((Integer) currentFloor);
 
 
     }
@@ -94,6 +104,7 @@ public class Cabin extends Thread {
     }
 
    void addStop (int floorNo){
+        if (request.contains(floorNo)) return;
         request.add(floorNo);
 
 
