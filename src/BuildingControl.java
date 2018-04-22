@@ -58,7 +58,7 @@ public class BuildingControl extends Thread
   {
     //Cabin ID has to be 0,1,2,3. GUI uses this to recognize the cabins.
     initialize();
-
+    cabins[0].start();
     cabins[1].start();
     cabins[2].start();
     cabins[3].start();
@@ -71,7 +71,7 @@ public class BuildingControl extends Thread
       if (a != null)
       {
         System.out.println(a[0]);
-        cabins[0].start();
+
         cabins[0].addStop(a[0]);
         //break;
       }

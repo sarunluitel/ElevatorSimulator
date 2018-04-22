@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIcontrol">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIcontrol">
    <children>
       <Pane layoutX="41.0" layoutY="12.0" prefHeight="700.0" prefWidth="581.0" style="-fx-background-color: #D6DBDF;">
          <children>
@@ -34,87 +34,87 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn9up" layoutX="22.0" layoutY="120.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
+            <Button fx:id="btn09up" layoutX="22.0" layoutY="120.0" mnemonicParsing="false" onAction="#floorRequests" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn9down" layoutX="66.0" layoutY="120.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
+            <Button fx:id="btn09down" layoutX="66.0" layoutY="120.0" mnemonicParsing="false" onAction="#floorRequests" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn6up" layoutX="22.0" layoutY="331.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
+            <Button fx:id="btn06up" layoutX="22.0" layoutY="331.0" mnemonicParsing="false" onAction="#floorRequests" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn7down" layoutX="66.0" layoutY="261.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
+            <Button fx:id="btn07down" layoutX="66.0" layoutY="261.0" mnemonicParsing="false" onAction="#floorRequests" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn8up" layoutX="22.0" layoutY="190.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
+            <Button fx:id="btn08up" layoutX="22.0" layoutY="190.0" mnemonicParsing="false" onAction="#floorRequests" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn8down" layoutX="66.0" layoutY="190.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
+            <Button fx:id="btn08down" layoutX="66.0" layoutY="190.0" mnemonicParsing="false" onAction="#floorRequests" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn7up" layoutX="23.0" layoutY="261.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
+            <Button fx:id="btn07up" layoutX="23.0" layoutY="261.0" mnemonicParsing="false" onAction="#floorRequests" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn6down" layoutX="66.0" layoutY="330.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
+            <Button fx:id="btn06down" layoutX="66.0" layoutY="330.0" mnemonicParsing="false" onAction="#floorRequests" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn5up" layoutX="22.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
+            <Button fx:id="btn05up" layoutX="22.0" layoutY="400.0" mnemonicParsing="false" onAction="#floorRequests" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn5down" layoutX="66.0" layoutY="401.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
+            <Button fx:id="btn05down" layoutX="66.0" layoutY="401.0" mnemonicParsing="false" onAction="#floorRequests" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn4up" layoutX="22.0" layoutY="471.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
+            <Button fx:id="btn04up" layoutX="22.0" layoutY="471.0" mnemonicParsing="false" onAction="#floorRequests" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn4down" layoutX="66.0" layoutY="470.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
+            <Button fx:id="btn04down" layoutX="66.0" layoutY="470.0" mnemonicParsing="false" onAction="#floorRequests" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn3up" layoutX="22.0" layoutY="540.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
+            <Button fx:id="btn03up" layoutX="22.0" layoutY="540.0" mnemonicParsing="false" onAction="#floorRequests" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn3down" layoutX="66.0" layoutY="541.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
+            <Button fx:id="btn03down" layoutX="66.0" layoutY="541.0" mnemonicParsing="false" onAction="#floorRequests" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn2up" layoutX="22.0" layoutY="610.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
+            <Button fx:id="btn02up" layoutX="22.0" layoutY="610.0" mnemonicParsing="false" onAction="#floorRequests" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn2down" layoutX="66.0" layoutY="611.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
+            <Button fx:id="btn02down" layoutX="66.0" layoutY="611.0" mnemonicParsing="false" onAction="#floorRequests" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="v">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn1up" layoutX="41.0" layoutY="661.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
+            <Button fx:id="btn01up" layoutX="41.0" layoutY="661.0" mnemonicParsing="false" onAction="#floorRequests" prefHeight="25.0" prefWidth="37.0" style="-fx-background-radius: 40;" text="^">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

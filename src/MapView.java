@@ -33,7 +33,7 @@ public class MapView
 
   void setElevators(Cabin[] a)
   {
-    // set references of elevators for GUI to take reference.
+    // set references of elevators for GUI to reference them.
     this.cabins = a;
   }
 
