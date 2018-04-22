@@ -61,6 +61,7 @@ public class MapView
       // gives position of the selected button.
       if (selectedCabin[i].selectedProperty().get()) return i;
     }
+
     return -1; // code should never get to here.
   }
 
