@@ -46,7 +46,7 @@ public class GUIcontrol extends AnimationTimer
     int floor = Integer.parseInt(pressed.getId().substring(3, 5));
 
     int direction;
-    if (pressed.getId().substring(5) == "down")
+    if (pressed.getId().substring(5).equalsIgnoreCase("down"))
     {
       direction = -1;
     } else

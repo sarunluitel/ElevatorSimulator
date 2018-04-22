@@ -26,9 +26,9 @@ public class MapView
 
   int[] getFloorRequests (){
     // returns array [floor,direction] -1 for down, +1 for up. floor in int.
-    int[] a = this.floorRequest;
-    this.floorRequest = null;
-    return a;
+    return this.floorRequest;
+    //this.floorRequest = null;
+   // return a;
   }
 
   void setElevators(Cabin[] a)
