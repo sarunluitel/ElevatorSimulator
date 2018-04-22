@@ -2,10 +2,11 @@ import javafx.scene.control.RadioButton;
 
 public class MapView
 {
-  private static MapView mapView = null;
-  private RadioButton[] selectedCabin;
-  private int[] floorRequest = null;
-  Cabin[] cabins;
+  private volatile static MapView mapView = null;
+  private volatile RadioButton[] selectedCabin;
+  private volatile int[] floorRequest = null;
+  volatile Cabin[] cabins;
+  private boolean DEBUG = true;
 
   private MapView()
   {
@@ -20,15 +21,16 @@ public class MapView
 
   void setFloorRequests(int[] req)
   {
+    //if(DEBUG) System.out.println(req[0]+"   "+req[1]);
     //req is an int array [10,-1] from floor 10, wants to go down. +1 for up.
     this.floorRequest = req;
   }
 
   int[] getFloorRequests (){
     // returns array [floor,direction] -1 for down, +1 for up. floor in int.
-    return this.floorRequest;
-    //this.floorRequest = null;
-   // return a;
+    int[] a = this.floorRequest;
+    this.floorRequest = null;
+    return a;
   }
 
   void setElevators(Cabin[] a)

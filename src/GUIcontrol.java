@@ -17,6 +17,7 @@ public class GUIcontrol extends AnimationTimer
   private Cabin[] cabins;
   private RadioButton[] selectedCabin = new RadioButton[4];
   private long lastUpdate = 0;
+  private boolean DEBUG =true;
 
   @FXML
   void initialize()
@@ -42,6 +43,7 @@ public class GUIcontrol extends AnimationTimer
   private void floorRequests(Event e)
   {
     Button pressed = (Button) e.getSource();
+    //System.out.println(pressed.getId());
 
     int floor = Integer.parseInt(pressed.getId().substring(3, 5));
 
