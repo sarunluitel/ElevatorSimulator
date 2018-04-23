@@ -25,13 +25,12 @@ public class BuildingControl extends Thread
   {
 
       requestQueue = new ArrayList<>();
-    cabins = new Cabin[4]; // run
+    cabins = new Cabin[2]; // run
 
     //Cabin ID has to be 0,1,2,3. GUI uses this to recognize the cabins.
     cabins[0] = new Cabin(0);
     cabins[1] = new Cabin(1);
-    cabins[2] = new Cabin(2);
-    cabins[3] = new Cabin(3);
+
 
 
 
@@ -66,7 +65,7 @@ public class BuildingControl extends Thread
     int temp;
     for (int i = 0; i < cabins.length ; i++){
       temp = validateCabin(floorNo,dir,i);
-      System.out.println("Best Distance for cabin " + i + "  floor : " + floorNo + " is " + temp + " cabin is at "+ cabins[i].getCurrentFloor());
+      //System.out.println("Best Distance for cabin " + i + "  floor : " + floorNo + " is " + temp + " cabin is at "+ cabins[i].getCurrentFloor());
       if (temp < bestDistance){
         bestDistance = temp;
         id = i;
@@ -102,8 +101,6 @@ public class BuildingControl extends Thread
     initialize();
     cabins[0].start();
     cabins[1].start();
-    cabins[2].start();
-    cabins[3].start();
 
 
 
@@ -124,7 +121,6 @@ public class BuildingControl extends Thread
             cabins[id].addStop(a[0]);
           }
           else{
-            System.out.println("--------------------------------------------------------------------------------------");
               requestQueue.add(a[0]);
               requestQueue.add(a[1]);
           }
@@ -134,7 +130,7 @@ public class BuildingControl extends Thread
             int id = handdleRequest(requestQueue.get(i),requestQueue.get(i+1));
             if (id>=0){
                 cabins[id].addStop(requestQueue.get(i));
-              System.out.println("Length of requestQueue is " + requestQueue.size() + "and value of i is " + i);
+              //System.out.println("Length of requestQueue is " + requestQueue.size() + "and value of i is " + i);
                 requestQueue.remove(i);
                 requestQueue.remove(i);
             }

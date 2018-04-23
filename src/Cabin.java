@@ -82,6 +82,15 @@ public class Cabin extends Thread {
             this.currentFloor --;
         }
 
+        if (currentFloor > 10 || currentFloor < 0){
+            System.out.println("--------------------------------------------");
+            for (int i = 0; i < request.size(); i++){
+               int a = (int) request.get(i);
+                System.out.println("request is "+ a);
+                System.out.println("CabinState is " + cabinState);
+            }
+        }
+
 
 
     }

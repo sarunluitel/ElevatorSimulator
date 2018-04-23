@@ -65,9 +65,11 @@ public class MapView
     return -1; // code should never get to here.
   }
 
-  void setCabinFloorRequest(int a)
+  void setCabinFloorRequest(int b)
   {
-    this.cabinfloorRequest = a;
+    this.cabinfloorRequest = b;
+    int[] a = {this.cabinfloorRequest, this.getSelectedCabin()};
+    System.out.println("floor " + a[0] + " fom cabin "+ a[1]);
   }
 
   int[] getCabinFloorRequest()
@@ -76,6 +78,7 @@ public class MapView
     int[] a = {this.cabinfloorRequest, this.getSelectedCabin()};
     this.cabinfloorRequest = -1;
     this.cabinfloorRequest = -10;
+
     return a;
   }
 }
