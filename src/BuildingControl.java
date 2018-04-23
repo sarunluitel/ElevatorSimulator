@@ -88,10 +88,10 @@ public class BuildingControl extends Thread
       }
     }
     else{
-      return (floorNo - currentFloor) * dir;
+      return Math.abs(floorNo - currentFloor) ;
     }
     if (((floorNo - currentFloor) * dir) < 0) return 100;
-    return (floorNo - currentFloor) * dir;
+    return Math.abs(floorNo - currentFloor) ;
   }
 
 
@@ -116,8 +116,8 @@ public class BuildingControl extends Thread
     {
       public void run()
       {
-        int[] a = MapView.getInstance().getCabinFloorRequest();
-        if (a!=null && a[0] != -10 ){
+        int[] a = MapView.getInstance().getFloorRequests();
+        if (a!=null ){
           System.out.println("floor  "+a[0]);
           int id = handdleRequest(a[0],a[1]);
           if (id>=0){
