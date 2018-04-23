@@ -25,11 +25,13 @@ public class BuildingControl extends Thread
   {
 
       requestQueue = new ArrayList<>();
-    cabins = new Cabin[2]; // run
+    cabins = new Cabin[4]; // run
 
     //Cabin ID has to be 0,1,2,3. GUI uses this to recognize the cabins.
     cabins[0] = new Cabin(0);
-    cabins[1] = new Cabin(0);
+    cabins[1] = new Cabin(1);
+    cabins[2] = new Cabin(2);
+    cabins[3] = new Cabin(3);
 
 
 
@@ -100,6 +102,8 @@ public class BuildingControl extends Thread
     initialize();
     cabins[0].start();
     cabins[1].start();
+    cabins[2].start();
+    cabins[3].start();
 
 
 
