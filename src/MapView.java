@@ -7,7 +7,7 @@ public class MapView
   private volatile int[] floorRequest = null;
   volatile Cabin[] cabins;
   private boolean DEBUG = true;
-  private int cabinfloorRequest;
+  private int cabinfloorRequest =-10; // null equivalent for  no cabins selected yet.
 
   private MapView()
   {
@@ -53,7 +53,7 @@ public class MapView
     this.selectedCabin = a;
   }
 
-  // returns 1,2,3,4.. The selected cabin from Radio Button.
+  // returns 0,1,2,3.. The selected cabin from Radio Button.
   public int getSelectedCabin()
   {
     for (int i = 0; i < 4; i++)
@@ -72,8 +72,10 @@ public class MapView
 
   int[] getCabinFloorRequest()
   {
+    if (this.cabinfloorRequest == -10) return null;
     int[] a = {this.cabinfloorRequest, this.getSelectedCabin()};
     this.cabinfloorRequest = -1;
+    this.cabinfloorRequest = -10;
     return a;
   }
 }

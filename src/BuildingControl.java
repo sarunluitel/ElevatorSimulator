@@ -103,8 +103,8 @@ public class BuildingControl extends Thread
     {
       public void run()
       {
-        int[] a = MapView.getInstance().getFloorRequests();
-        if (a!=null ){
+        int[] a = MapView.getInstance().getCabinFloorRequest();
+        if (a!=null && a[0] != -10 ){
           System.out.println("floor  "+a[0]);
           int id = handdleRequest(a);
           if (id>=0){
