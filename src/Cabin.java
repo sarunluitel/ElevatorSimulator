@@ -37,11 +37,12 @@ public class Cabin extends Thread {
                             e.printStackTrace();
                         }
                     }
-                }
-                    if (cabinState != States.CabinStates.Ideal){
+                    if (request.isEmpty()){
                         cabinState = States.CabinStates.Ideal;
                         System.out.println("Cabin " + id + " is ideal now");
                     }
+                }
+
 
                 }
 
@@ -58,7 +59,8 @@ public class Cabin extends Thread {
 
     private void changeState(){
         if ((int)request.get(0) > currentFloor) this.cabinState = States.CabinStates.UP;
-        else this.cabinState = States.CabinStates.Down;
+        else if ((int)request.get(0) < currentFloor) this.cabinState = States.CabinStates.Down;
+        else this.cabinState = States.CabinStates.Ideal;
     }
 
 
@@ -75,10 +77,11 @@ public class Cabin extends Thread {
             this.currentFloor ++;
         }
 
-        else {
+        else if (cabinState == States.CabinStates.Down) {
             this.sleep(500);
             this.currentFloor --;
         }
+
 
 
     }
