@@ -110,13 +110,8 @@ public class GUIcontrol extends AnimationTimer
     int floor = cabin.currentHeight;
     elev.setLayoutY(710 - (floor));
 
-    if (cabin.door.getisDoorOpen())
-    {
-      elev.setProgress(0);
-    } else
-    {
-      elev.setProgress(1);
-    }
+    elev.setProgress(1-(cabin.door.getOpenPercentage()/71.0));
+
 
   }
 

@@ -121,7 +121,6 @@ public class Cabin extends Thread
     {
       if (this.motorState == States.CabinStates.UP)
       {
-        System.out.println("inside move method GOING UP");
         currentHeight += 1;
       } else if (this.motorState == States.CabinStates.Down)
       {
@@ -136,7 +135,7 @@ public class Cabin extends Thread
   public void move() throws InterruptedException
   {
 
-      if (currentFloor+1 > 10 || currentFloor-1 <= 1)
+      if (currentFloor+1 > 11 || currentFloor-1 < 0)
       {
          return;
       }

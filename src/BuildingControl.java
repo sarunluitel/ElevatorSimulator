@@ -116,6 +116,7 @@ public class BuildingControl extends Thread
   void reInitializeCabins(){
     for (Cabin c: cabins){
       c.clearRequest();
+      c.door.removeFromEmergency();
     }
   }
 
