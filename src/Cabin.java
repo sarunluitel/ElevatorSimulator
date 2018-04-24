@@ -9,6 +9,8 @@ public class Cabin extends Thread {
     private States.CabinStates cabinState;
     private ArrayList request = new ArrayList<Integer>();
     private int currentFloor=0;
+
+
     boolean busy = false;
     DoorControl door;
 
