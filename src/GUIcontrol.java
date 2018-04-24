@@ -4,20 +4,24 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.RadioButton;
+import javafx.scene.layout.Pane;
 
 
 public class GUIcontrol extends AnimationTimer
 {
   @FXML
-  ProgressBar elev0, elev1, elev2, elev3;
+  private ProgressBar elev0, elev1, elev2, elev3;
 
   @FXML
-  RadioButton rbCab0, rbCab1, rbCab2, rbCab3;
+  private RadioButton rbCab0, rbCab1, rbCab2, rbCab3;
+
+  @FXML
+  private Pane cabin0;
 
   private Cabin[] cabins;
   private RadioButton[] selectedCabin = new RadioButton[4];
   private long lastUpdate = 0;
-  private boolean DEBUG =true;
+  private boolean DEBUG = true;
 
   @FXML
   void initialize()
@@ -29,6 +33,8 @@ public class GUIcontrol extends AnimationTimer
       // waits until it gets all elevator's references.
       this.cabins = MapView.getInstance().getElevators();
     }
+
+    // Give map view pointer to  array of radio Buttons
     selectedCabin[0] = rbCab0;
     selectedCabin[1] = rbCab1;
     selectedCabin[2] = rbCab2;
@@ -61,11 +67,23 @@ public class GUIcontrol extends AnimationTimer
   }
 
   @FXML
-  private void cabinFlorRequest(Event e){
+  private void cabinFlorRequest(Event e)
+  {
     Button pressed = (Button) e.getSource();
 
     int floor = Integer.parseInt(pressed.getId().substring(6));
     MapView.getInstance().setCabinFloorRequest(floor);
+
+    for (Object o :
+        cabin0.getChildren())
+    {
+      if (o instanceof  Button){
+        Button a = (Button) o;
+        System.out.println(a.getId());
+      }
+
+    }
+
   }
 
   private void updateCabin(Cabin cabin, ProgressBar elev)

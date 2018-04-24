@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -121,26 +122,26 @@
             </Button>
          </children>
       </Pane>
-      <Pane layoutX="656.0" layoutY="14.0" prefHeight="393.0" prefWidth="558.0" style="-fx-background-color: #D6DBDF;">
+      <Pane layoutX="656.0" layoutY="14.0" prefHeight="368.0" prefWidth="558.0" style="-fx-background-color: #D6DBDF;">
          <children>
-            <RadioButton fx:id="rbCab0" layoutX="31.0" layoutY="56.0" mnemonicParsing="false" selected="true" text="Elevator 1">
+            <RadioButton fx:id="rbCP0" layoutX="31.0" layoutY="56.0" mnemonicParsing="false" selected="true" text="Elevator 1">
                <toggleGroup>
-                  <ToggleGroup fx:id="elevators" />
+                  <ToggleGroup fx:id="CPselectors" />
                </toggleGroup></RadioButton>
-            <RadioButton fx:id="rbCab1" layoutX="147.0" layoutY="56.0" mnemonicParsing="false" text="Elevator 2" toggleGroup="$elevators" />
-            <RadioButton fx:id="rbCab2" layoutX="242.0" layoutY="56.0" mnemonicParsing="false" text="Elevator 3" toggleGroup="$elevators" />
-            <RadioButton fx:id="rbCab3" layoutX="332.0" layoutY="56.0" mnemonicParsing="false" text="Elevator 4" toggleGroup="$elevators" />
-            <TextArea fx:id="txtStatus" layoutX="280.0" layoutY="132.0" prefHeight="111.0" prefWidth="275.0" text="Floor:  X&#10;Door Status: Closed ">
+            <RadioButton fx:id="rbCP1" layoutX="147.0" layoutY="56.0" mnemonicParsing="false" text="Elevator 2" toggleGroup="$CPselectors" />
+            <RadioButton fx:id="rbCP2" layoutX="242.0" layoutY="56.0" mnemonicParsing="false" text="Elevator 3" toggleGroup="$CPselectors" />
+            <RadioButton fx:id="rbCP3" layoutX="332.0" layoutY="56.0" mnemonicParsing="false" text="Elevator 4" toggleGroup="$CPselectors" />
+            <TextArea fx:id="txtStatus" layoutX="269.0" layoutY="111.0" prefHeight="111.0" prefWidth="275.0" text="Floor:  X&#10;Door Status: Closed ">
                <font>
                   <Font size="14.0" />
                </font>
             </TextArea>
-            <Text layoutX="369.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status">
+            <Text layoutX="364.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Pane layoutX="29.0" layoutY="105.0" prefHeight="275.0" prefWidth="237.0" style="-fx-background-color: #EBEDEF;">
+            <Pane layoutX="14.0" layoutY="84.0" prefHeight="275.0" prefWidth="237.0" style="-fx-background-color: #EBEDEF;">
                <children>
                   <Button fx:id="bthCP1" layoutX="29.0" layoutY="20.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="1">
                      <font>
@@ -204,70 +205,79 @@
                   <Font size="25.0" />
                </font>
             </Text>
+            <ToggleButton layoutX="269.0" layoutY="278.0" mnemonicParsing="false" text="ToggleButton" />
          </children>
       </Pane>
-      <Pane layoutX="720.0" layoutY="423.0" prefHeight="288.0" prefWidth="238.0" style="-fx-background-color: #EBEDEF;">
+      <Pane fx:id="cabin0" layoutX="727.0" layoutY="392.0" prefHeight="320.0" prefWidth="416.0" style="-fx-background-color: #EBEDEF;">
          <children>
-            <Button fx:id="btnCab01" layoutX="29.0" layoutY="36.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="1">
+            <Button fx:id="btnCab01" layoutX="108.0" layoutY="68.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="1">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCab02" layoutX="97.0" layoutY="36.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="2">
+            <Button fx:id="bthCab02" layoutX="176.0" layoutY="68.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="2">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCab03" layoutX="159.0" layoutY="36.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="3">
+            <Button fx:id="bthCab03" layoutX="238.0" layoutY="68.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="3">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCabKey" layoutX="103.0" layoutY="223.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 100;" text="Key">
+            <Button fx:id="bthCabKey" layoutX="182.0" layoutY="255.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 100;" text="Key">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCab04" layoutX="29.0" layoutY="96.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="4">
+            <Button fx:id="bthCab04" layoutX="108.0" layoutY="128.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="4">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCab05" layoutX="97.0" layoutY="96.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="5">
+            <Button fx:id="bthCab05" layoutX="176.0" layoutY="128.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="5">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCab06" layoutX="159.0" layoutY="96.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="6">
+            <Button fx:id="bthCab06" layoutX="238.0" layoutY="128.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="6">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCab07" layoutX="29.0" layoutY="164.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="7">
+            <Button fx:id="bthCab07" layoutX="108.0" layoutY="196.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="7">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCab08" layoutX="97.0" layoutY="164.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="8">
+            <Button fx:id="bthCab08" layoutX="176.0" layoutY="196.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="8">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCab09" layoutX="159.0" layoutY="164.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="9">
+            <Button fx:id="bthCab09" layoutX="238.0" layoutY="196.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="9">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCab10" layoutX="29.0" layoutY="223.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="51.0" prefWidth="68.0" style="-fx-background-radius: 100;" text="10">
+            <Button fx:id="bthCab10" layoutX="108.0" layoutY="255.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="51.0" prefWidth="68.0" style="-fx-background-radius: 100;" text="10">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Text layoutX="38.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cabin Control Elv">
+            <Text layoutX="114.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cabin Control Elv">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Text>
+            <RadioButton fx:id="rbCab0" layoutX="14.0" layoutY="36.0" mnemonicParsing="false" selected="true" text="Elevator 1">
+               <toggleGroup>
+                  <ToggleGroup fx:id="cabinSelector" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="rbCab1" layoutX="108.0" layoutY="36.0" mnemonicParsing="false" text="Elevator 2" toggleGroup="$cabinSelector" />
+            <RadioButton fx:id="rbCab2" layoutX="209.0" layoutY="36.0" mnemonicParsing="false" text="Elevator 3" toggleGroup="$cabinSelector" />
+            <RadioButton fx:id="rbCab3" layoutX="311.0" layoutY="36.0" mnemonicParsing="false" text="Elevator 4" toggleGroup="$cabinSelector" />
          </children>
       </Pane>
    </children>
