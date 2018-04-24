@@ -183,17 +183,17 @@
                         <Font name="System Bold" size="19.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton fx:id="btnCP" layoutX="91.0" layoutY="138.0" mnemonicParsing="false" onAction="#updateDisabled" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" styleClass="toggle-container" stylesheets="@style.css" text="8">
+                  <ToggleButton fx:id="btnCP08" layoutX="91.0" layoutY="138.0" mnemonicParsing="false" onAction="#updateDisabled" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" styleClass="toggle-container" stylesheets="@style.css" text="8">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton layoutX="170.0" layoutY="138.0" mnemonicParsing="false" onAction="#updateDisabled" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" styleClass="toggle-container" stylesheets="@style.css" text="9">
+                  <ToggleButton fx:id="btnCP09" layoutX="170.0" layoutY="138.0" mnemonicParsing="false" onAction="#updateDisabled" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" styleClass="toggle-container" stylesheets="@style.css" text="9">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton layoutX="18.0" layoutY="207.0" mnemonicParsing="false" onAction="#updateDisabled" prefHeight="50.0" prefWidth="57.0" style="-fx-background-radius: 100;" styleClass="toggle-container" stylesheets="@style.css" text="10">
+                  <ToggleButton fx:id="btnCP10" layoutX="18.0" layoutY="207.0" mnemonicParsing="false" onAction="#updateDisabled" prefHeight="50.0" prefWidth="57.0" style="-fx-background-radius: 100;" styleClass="toggle-container" stylesheets="@style.css" text="10">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
@@ -207,7 +207,7 @@
             </Text>
          </children>
       </Pane>
-      <Pane fx:id="cabin0" layoutX="727.0" layoutY="392.0" prefHeight="320.0" prefWidth="416.0" style="-fx-background-color: #EBEDEF;">
+      <Pane fx:id="cabinPane" layoutX="727.0" layoutY="392.0" prefHeight="320.0" prefWidth="416.0" style="-fx-background-color: #EBEDEF;">
          <children>
             <Button fx:id="btnCab01" layoutX="108.0" layoutY="68.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="1">
                <font>
@@ -224,7 +224,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="bthCabKey" layoutX="182.0" layoutY="255.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 100;" text="Key">
+            <Button fx:id="btnCabKey" layoutX="182.0" layoutY="255.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 100;" text="Key">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

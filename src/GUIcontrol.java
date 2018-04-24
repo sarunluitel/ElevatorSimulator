@@ -37,7 +37,7 @@ public class GUIcontrol extends AnimationTimer
 
   private int cabinSelection;
   private boolean DEBUG = true;
-  private boolean GUIready = false;
+  private boolean buttonsReady = false;
 
   @FXML
   void initialize()
@@ -69,7 +69,6 @@ public class GUIcontrol extends AnimationTimer
       activeButtons.add(i, new HashSet());
     }
 
-    GUIready = true;
 
   }
 
@@ -122,6 +121,7 @@ public class GUIcontrol extends AnimationTimer
   @FXML
   private void updateDisabled()
   {
+    activeButtons.get(selectedCPnum).clear();
     for (Object b : cpPane.getChildren())
     {
       if (b instanceof ToggleButton)
@@ -129,15 +129,64 @@ public class GUIcontrol extends AnimationTimer
         ToggleButton selBtn = (ToggleButton) b;
         if (selBtn.isSelected())
         {
-          HashSet temp = activeButtons.get(selectedCPnum);
-          System.out.println(selBtn.getId());
-          //int tempnum = Integer.parseInt(selBtn.getId().substring(5));
+          int tempnum = Integer.parseInt(selBtn.getId().substring(5));
+
+          activeButtons.get(selectedCPnum).add(tempnum);
+          System.out.println();
         }
       }
 
 
     }
+    buttonsReady = true;
 
+  }
+
+  private void disableButtons()
+  {
+    for (Object o : cabinPane.getChildren())
+    {
+      if (o instanceof Button)
+      {
+        Button b = (Button) o;
+        if (!b.getId().equalsIgnoreCase("btnCabKey"))
+        {
+          int temp = Integer.parseInt(b.getId().substring(6));
+          if (activeButtons.get(selectedCabnum).contains(temp))
+          {
+            b.setDisable(true);
+
+          } else
+          {
+            b.setDisable(false);
+          }
+        }
+      }
+
+    }
+
+  }
+
+  private void updateToggle()
+  {
+    for (Object o : cpPane.getChildren())
+    {
+      if (o instanceof ToggleButton)
+      {
+        ToggleButton b = (ToggleButton) o;
+        int temp = Integer.parseInt(b.getId().substring(6));
+        if (activeButtons.get(selectedCPnum).contains(temp))
+        {
+          b.setSelected(true);
+
+        } else
+        {
+          b.setSelected(false);
+        }
+
+      }
+
+    }
 
   }
 
@@ -156,15 +205,19 @@ public class GUIcontrol extends AnimationTimer
       }
 
       lastUpdate = now;
+      for (int i = 0; i < 4; i++)
+      {
+        // gives position of the selected button.
+        if (selectedCabin[i].selectedProperty().get()) selectedCabnum = i;
+        if (selectedCP[i].selectedProperty().get()) selectedCPnum = i;
+      }
 
-    }
+      if (buttonsReady) disableButtons();
+      if (buttonsReady) updateToggle();
 
-    for (int i = 0; i < 4; i++)
-    {
-      // gives position of the selected button.
-      if (selectedCabin[i].selectedProperty().get()) selectedCabnum = i;
-      if (selectedCP[i].selectedProperty().get()) selectedCPnum = i;
-    }
+
+    }// no code below this line on this method
+
 
   }
 }
