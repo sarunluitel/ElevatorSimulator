@@ -5,16 +5,19 @@ import java.util.TimerTask;
 public class Cabin extends Thread {
 
     private int id ;
+    private MotionControl motion;
     private States.CabinStates cabinState;
     private ArrayList request = new ArrayList<Integer>();
-    private ArrayList requestQueue = new ArrayList<Integer>();
     private int currentFloor=0;
+
+
     boolean busy = false;
     DoorControl door;
 
     public int getcabinId() {
         return id;
     }
+
 
     @Override
     public  void run() {
@@ -31,24 +34,27 @@ public class Cabin extends Thread {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    if (request.contains(currentFloor)) {
+                    if (request.contains(motion.upComingFloor)) {
                         try {
                             executeStopped();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                     }
-                    if (request.isEmpty()){
+
+                    else
+                    {
+                        try {
+                            continueMoving();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                    if (cabinState != States.CabinStates.Ideal){
                         cabinState = States.CabinStates.Ideal;
                         System.out.println("Cabin " + id + " is ideal now");
                     }
-                }
-                if (!requestQueue.isEmpty()){
-                    System.out.printf("adding queue");
-                    request.addAll(requestQueue);
-                    requestQueue.clear();
-                }
-
 
                 }
 
@@ -57,20 +63,19 @@ public class Cabin extends Thread {
 
 // And From your main() method or any other method
         Timer timer = new Timer();
-        timer.schedule(new SayHello(), 0, 50);
+        timer.schedule(new SayHello(), 0, 500);
 
 
 
     }
 
-    private synchronized void changeState(){
+    private void changeState(){
         if ((int)request.get(0) > currentFloor) this.cabinState = States.CabinStates.UP;
-        else if ((int)request.get(0) < currentFloor) this.cabinState = States.CabinStates.Down;
-        else this.cabinState = States.CabinStates.Ideal;
+        else this.cabinState = States.CabinStates.Down;
     }
 
 
-    public synchronized States.CabinStates getCabinState() {return this.cabinState;}
+    public States.CabinStates getCabinState() {return this.cabinState;}
     public  void setCabinState(States.CabinStates newState) { this.cabinState = newState;}
 
     public  int getCurrentFloor() {return this.currentFloor;}
@@ -78,24 +83,20 @@ public class Cabin extends Thread {
     public  void move() throws InterruptedException {
 
         if (cabinState == States.CabinStates.UP) {
-            this.sleep(500);
+            //this.sleep(500);
             System.out.println("changing current floor");
-            this.currentFloor ++;
+            motion.moveUp();
+            this.sleep(4500);
+
+            System.out.println("THe current height is ::: " + motion.currentHeight);
+            motion.setUpComingFloor(this.currentFloor + 1);
+
+            //this.currentFloor ++;
         }
 
-        else if (cabinState == States.CabinStates.Down) {
-            this.sleep(500);
+        else {
+           // this.sleep(500);
             this.currentFloor --;
-        }
-
-        if (currentFloor > 10 || currentFloor < 0){
-            System.out.println("--------------------------------------------");
-            for (int i = 0; i < request.size(); i++){
-               int a = (int) request.get(i);
-                System.out.println("request is "+ a);
-            }
-            System.out.println("CabinState is " + cabinState);
-            System.out.println("Floor is " + currentFloor);
         }
 
 
@@ -103,14 +104,36 @@ public class Cabin extends Thread {
     }
 
     public  void executeStopped() throws InterruptedException {
-
-       // System.out.println("Stopped Cabin " + id + "at floor " + getCurrentFloor());
+        motion.stop();
+        this.currentFloor = motion.upComingFloor;
+        System.out.println("Stopped Cabin " + id + "at floor " + getCurrentFloor());
         synchronized (door){
             door.changeStoppedState();
             door.wait();
         }
         request.remove((Integer) currentFloor);
 
+    }
+
+    public void continueMoving () throws InterruptedException{
+        System.out.println("The descision is not to stop. Hence, moving continues ::");
+        if (cabinState == States.CabinStates.UP) {
+            System.out.println("changing current floor");
+
+            motion.moveContinue();
+            this.sleep(4500);
+            this.currentFloor ++;
+
+            System.out.println("THe current height is ::: " + motion.currentHeight);
+            motion.setUpComingFloor(this.currentFloor + 1);
+
+            //this.currentFloor ++;
+        }
+
+        else {
+            // this.sleep(500);
+            this.currentFloor --;
+        }
 
     }
 
@@ -118,43 +141,15 @@ public class Cabin extends Thread {
         this.id = id;
         this.cabinState = States.CabinStates.Ideal;
         this.currentFloor = 1;
+        motion = new MotionControl();
         this.door = new DoorControl();
         door.start();
     }
 
    void addStop (int floorNo){
-        boolean empty = request.isEmpty();
         if (request.contains(floorNo)) return;
-        if (floorNo == currentFloor) return;;
-       System.out.println("request " + floorNo + " is added when currentfloor " + currentFloor);
-       System.out.print("request is ");
-       for (int i = 0; i < request.size(); i++){
-           int a = (int) request.get(i);
-           System.out.print(" " + a + " ");
-       }
-       System.out.println();
         request.add(floorNo);
-        if (empty) changeState();
 
-
-    }
-
-
-    void addCabinStop (int floorNo){
-
-        int difference = floorNo - currentFloor;
-        System.out.println("adding request " + floorNo + " difference is " + difference);
-        if (difference < 0 && (cabinState == States.CabinStates.Down || cabinState == States.CabinStates.Ideal)){
-            request.add(floorNo);
-            return;
-        }
-
-        if (difference > 0 && (cabinState == States.CabinStates.UP || cabinState == States.CabinStates.Ideal)){
-            request.add(floorNo);
-            return;
-        }
-        System.out.println("adding at queue " + floorNo);
-        requestQueue.add(floorNo)  ;
 
     }
 }

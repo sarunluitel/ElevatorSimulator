@@ -8,13 +8,14 @@ public class Motion{
      * then it deaccelerates with the same negative aceeleration as first part
      */
 
-    public final double FLOOR_HEIGHT = 2.5; // height of floor in meters
-    public final double MAX_SPEED = 1; // the maximum speed (in m/s) upto which cabin accelerates
+
+    public final double FLOOR_HEIGHT = 250; // height of floor in meters
+    public final double MAX_SPEED = 100; // the maximum speed (in m/s) upto which cabin accelerates
     public final double TIME_FOR_MAXSPEED = 0.5; // time taken by cabin to reach max speed from rest
     public long startTime;
     public ArrayList <Double> motionList;
     int targetFloor;
-    double currentHeight;
+    long currentHeight;
     public long elapsedTime;
     public long position;
 
@@ -26,6 +27,7 @@ public class Motion{
     public double targerHeight;
     public double startHeight;
     public double timeForSlowingPoint;
+
 
 
     /**
@@ -102,7 +104,7 @@ public class Motion{
         {
            System.out.println("The cabin position is ==   " + currentHeight);
            double position = getPosition();
-           if (Math.abs(position - targerHeight) < 0.1)
+           if (Math.abs(position - targerHeight) < 10)
            {
                System.out.println("The target floor is reached");
                System.out.println("The target position is ==  " + targerHeight);
@@ -153,7 +155,7 @@ public class Motion{
 
             double diffTime = timeElapsed - timeForSlowingPoint;
             double diffPos = MAX_SPEED * diffTime - 0.5 * acceleration * diffTime * diffTime;
-            currentHeight = slowDownPoint + diffPos;
+            currentHeight = (long) (slowDownPoint + diffPos);
 
         }
 
@@ -162,14 +164,14 @@ public class Motion{
 
 
                 double diffPos = (0.5 * acceleration * timeElapsed * timeElapsed);
-                currentHeight = startHeight + diffPos;
+                currentHeight = (long) (startHeight + diffPos);
             }
 
             else
             {
                 double diffTime = timeElapsed - TIME_FOR_MAXSPEED;
                 double diffPos = MAX_SPEED * diffTime;
-                currentHeight = startHeight + diffPos;
+                currentHeight = (long) (startHeight + diffPos);
             }
         }
 
