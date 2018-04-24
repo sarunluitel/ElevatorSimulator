@@ -51,20 +51,20 @@ public class Cabin extends Thread {
 
 // And From your main() method or any other method
         Timer timer = new Timer();
-        timer.schedule(new SayHello(), 0, 500);
+        timer.schedule(new SayHello(), 0, 50);
 
 
 
     }
 
-    private void changeState(){
+    private synchronized void changeState(){
         if ((int)request.get(0) > currentFloor) this.cabinState = States.CabinStates.UP;
         else if ((int)request.get(0) < currentFloor) this.cabinState = States.CabinStates.Down;
         else this.cabinState = States.CabinStates.Ideal;
     }
 
 
-    public States.CabinStates getCabinState() {return this.cabinState;}
+    public synchronized States.CabinStates getCabinState() {return this.cabinState;}
     public  void setCabinState(States.CabinStates newState) { this.cabinState = newState;}
 
     public  int getCurrentFloor() {return this.currentFloor;}
@@ -87,8 +87,9 @@ public class Cabin extends Thread {
             for (int i = 0; i < request.size(); i++){
                int a = (int) request.get(i);
                 System.out.println("request is "+ a);
-                System.out.println("CabinState is " + cabinState);
             }
+            System.out.println("CabinState is " + cabinState);
+            System.out.println("Floor is " + currentFloor);
         }
 
 
@@ -97,7 +98,7 @@ public class Cabin extends Thread {
 
     public  void executeStopped() throws InterruptedException {
 
-        System.out.println("Stopped Cabin " + id + "at floor " + getCurrentFloor());
+       // System.out.println("Stopped Cabin " + id + "at floor " + getCurrentFloor());
         synchronized (door){
             door.changeStoppedState();
             door.wait();
@@ -116,8 +117,17 @@ public class Cabin extends Thread {
     }
 
    void addStop (int floorNo){
+        boolean empty = request.isEmpty();
         if (request.contains(floorNo)) return;
+       System.out.println("request " + floorNo + " is added when currentfloor " + currentFloor);
+       System.out.print("request is ");
+       for (int i = 0; i < request.size(); i++){
+           int a = (int) request.get(i);
+           System.out.print(" " + a + " ");
+       }
+       System.out.println();
         request.add(floorNo);
+        if (empty) changeState();
 
 
     }
