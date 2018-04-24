@@ -154,7 +154,7 @@ public class Cabin extends Thread {
             return;
         }
         System.out.println("adding at queue " + floorNo);
-        requestQueue.add(floorNo) ;
+        requestQueue.add(floorNo)  ;
 
     }
 }
