@@ -67,7 +67,7 @@ public class GUIcontrol extends AnimationTimer
     for (int i = 0; i < 4; i++)
     {
       activeButtons.add(i, new HashSet());
-      MapView.getInstance().setKey(i,false);
+      MapView.getInstance().setKey(i, false);
     }
 
 
@@ -204,16 +204,18 @@ public class GUIcontrol extends AnimationTimer
       if (o instanceof ToggleButton)
       {
         ToggleButton b = (ToggleButton) o;
-        int temp = Integer.parseInt(b.getId().substring(6));
-        if (activeButtons.get(selectedCPnum).contains(temp))
+        if (!b.getId().equalsIgnoreCase("btnCPemg"))
         {
-          b.setSelected(true);
+          int temp = Integer.parseInt(b.getId().substring(6));
+          if (activeButtons.get(selectedCPnum).contains(temp))
+          {
+            b.setSelected(true);
 
-        } else
-        {
-          b.setSelected(false);
+          } else
+          {
+            b.setSelected(false);
+          }
         }
-
       }
 
     }
