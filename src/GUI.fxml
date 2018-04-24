@@ -205,7 +205,7 @@
                   <Font size="25.0" />
                </font>
             </Text>
-            <ToggleButton layoutX="269.0" layoutY="278.0" mnemonicParsing="false" text="ToggleButton" />
+            <ToggleButton layoutX="269.0" layoutY="278.0" mnemonicParsing="false" style="-fx-background-color: red;" text="ToggleButton" />
          </children>
       </Pane>
       <Pane fx:id="cabin0" layoutX="727.0" layoutY="392.0" prefHeight="320.0" prefWidth="416.0" style="-fx-background-color: #EBEDEF;">
