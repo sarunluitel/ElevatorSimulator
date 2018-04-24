@@ -224,11 +224,6 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="btnCabKey" layoutX="182.0" layoutY="255.0" mnemonicParsing="false" onAction="#setKey" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 100;" text="Key">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Button>
             <Button fx:id="bthCab04" layoutX="108.0" layoutY="128.0" mnemonicParsing="false" onAction="#cabinFlorRequest" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="4">
                <font>
                   <Font name="System Bold" size="24.0" />
@@ -277,6 +272,11 @@
             <RadioButton fx:id="rbCab1" layoutX="108.0" layoutY="36.0" mnemonicParsing="false" text="Elevator 2" toggleGroup="$cabinSelector" />
             <RadioButton fx:id="rbCab2" layoutX="209.0" layoutY="36.0" mnemonicParsing="false" text="Elevator 3" toggleGroup="$cabinSelector" />
             <RadioButton fx:id="rbCab3" layoutX="311.0" layoutY="36.0" mnemonicParsing="false" text="Elevator 4" toggleGroup="$cabinSelector" />
+            <ToggleButton fx:id="btncabkey" layoutX="186.0" layoutY="256.0" mnemonicParsing="false" onAction="#setKey" prefHeight="50.0" prefWidth="133.0" style="-fx-background-radius: 100;" styleClass="toggle-container" text="Key" textFill="#282828">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </ToggleButton>
          </children>
       </Pane>
    </children>
