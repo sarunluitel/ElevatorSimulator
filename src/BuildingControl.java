@@ -75,7 +75,7 @@ public class BuildingControl extends Thread
       }
     }
 
-    if (bestDistance > 3 && id!=-1 && (cabins[id].getCabinState()!= States.CabinStates.Ideal)) {
+    if (bestDistance > 3 && id!=-1 && (cabins[id].getCabinState()!= States.CabinStates.Ideal))  {
       for (int i = 0; i < cabins.length; i++){
 
         if (cabins[i].getCabinState() == States.CabinStates.Ideal) {
@@ -128,44 +128,50 @@ public class BuildingControl extends Thread
 
     class SayHello extends TimerTask
     {
-      public void run()
-      {
-        int[] a = MapView.getInstance().getFloorRequests();
-        if (a!=null ){
-          System.out.println("floor  "+a[0]);
-          int id = handdleRequest(a[0],a[1]);
-          if (id>=0){
-            cabins[id].addStop(a[0]);
+      public void run() {
+        boolean emergency = MapView.getInstance().getisEmergency();
+        if (emergency) {
+          for (int i = 0; i < cabins.length; i++){
+            cabins[i].goToEmergency();
           }
-          else{
+
+        } else {
+          int[] a = MapView.getInstance().getFloorRequests();
+          if (a != null) {
+            System.out.println("floor  " + a[0]);
+            int id = handdleRequest(a[0], a[1]);
+            if (id >= 0) {
+              cabins[id].addStop(a[0]);
+            } else {
               requestQueue.add(a[0]);
               requestQueue.add(a[1]);
+            }
           }
-        }
 
-        for (int i = 0; i < requestQueue.size();i++){
-            int id = handdleRequest(requestQueue.get(i),requestQueue.get(i+1));
-            if (id>=0){
-                cabins[id].addStop(requestQueue.get(i));
+          for (int i = 0; i < requestQueue.size(); i++) {
+            int id = handdleRequest(requestQueue.get(i), requestQueue.get(i + 1));
+            if (id >= 0) {
+              cabins[id].addStop(requestQueue.get(i));
               //System.out.println("Length of requestQueue is " + requestQueue.size() + "and value of i is " + i);
-                requestQueue.remove(i);
-                requestQueue.remove(i);
+              requestQueue.remove(i);
+              requestQueue.remove(i);
             }
             i++;
-        }
+          }
 
-        int[] b = MapView.getInstance().getCabinFloorRequest();
-        if (b!=null){
-          cabins[b[1]].addCabinStop(b[0]);
-          System.out.println("request from elevator "+ b[0] + "at floor "+ b[1]);
-        }
+          int[] b = MapView.getInstance().getCabinFloorRequest();
+          if (b != null) {
+            cabins[b[1]].addCabinStop(b[0]);
+            System.out.println("request from elevator " + b[0] + "at floor " + b[1]);
+          }
 
+        }
       }
     }
 
 // And From your main() method or any other method
     Timer timer = new Timer();
-    timer.schedule(new SayHello(), 0, 50);
+    timer.schedule(new SayHello(), 0, 500);
 
 
   }
