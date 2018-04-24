@@ -1,10 +1,7 @@
 import javafx.animation.AnimationTimer;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
@@ -23,6 +20,8 @@ public class GUIcontrol extends AnimationTimer
   @FXML
   private Pane cpPane, cabinPane;
 
+  @FXML
+  private TextArea txtStatus;
   private Cabin[] cabins;
   private RadioButton[] selectedCabin = new RadioButton[4];
   private RadioButton[] selectedCP = new RadioButton[4];
@@ -37,8 +36,9 @@ public class GUIcontrol extends AnimationTimer
   private int cabinSelection;
   private boolean DEBUG = true;
   private boolean buttonsReady = false;
-  private boolean[] keysActive = {false,false,false,false};
-  private boolean keysready =false;
+  private boolean[] keysActive = {false, false, false, false};
+  private boolean keysready = false;
+  private boolean statusready = false;
 
   @FXML
   void initialize()
@@ -77,6 +77,7 @@ public class GUIcontrol extends AnimationTimer
   @FXML
   private void floorRequests(Event e)
   {
+    statusready = true;
     Button pressed = (Button) e.getSource();
     //System.out.println(pressed.getId());
 
@@ -98,6 +99,7 @@ public class GUIcontrol extends AnimationTimer
   @FXML
   private void cabinFlorRequest(Event e)
   {
+    statusready = true;
     Button pressed = (Button) e.getSource();
 
     int floor = Integer.parseInt(pressed.getId().substring(6));
@@ -123,6 +125,7 @@ public class GUIcontrol extends AnimationTimer
   @FXML
   private void updateDisabled()
   {
+    statusready = true;
     activeButtons.get(selectedCPnum).clear();
     for (Object b : cpPane.getChildren())
     {
@@ -147,6 +150,7 @@ public class GUIcontrol extends AnimationTimer
   @FXML
   void cpEmg(Event e)
   {
+    statusready = true;
     ToggleButton t = (ToggleButton) e.getSource();
     if (t.isSelected())
     {
@@ -161,29 +165,33 @@ public class GUIcontrol extends AnimationTimer
   @FXML
   void setKey(Event e)
   {
-    keysready=true;
+    keysready = true;
     ToggleButton b = (ToggleButton) e.getSource();
     if (b.isSelected())
     {
       MapView.getInstance().setKey(selectedCabnum, true);
-      keysActive[selectedCabnum]=true;
+      keysActive[selectedCabnum] = true;
 
     } else
     {
       MapView.getInstance().setKey(selectedCabnum, false);
-      keysActive[selectedCabnum]=false;
+      keysActive[selectedCabnum] = false;
 
     }
 
   }
 
-  private void updateKeys(){
-    for (Object o :cabinPane.getChildren())
+  private void updateKeys()
+  {
+    for (Object o : cabinPane.getChildren())
     {
-      if (o instanceof ToggleButton){
+      if (o instanceof ToggleButton)
+      {
         ToggleButton tb = (ToggleButton) o;
-        if(tb.getId().equalsIgnoreCase("btncabkey")){
-        tb.setSelected(keysActive[selectedCabnum]);}
+        if (tb.getId().equalsIgnoreCase("btncabkey"))
+        {
+          tb.setSelected(keysActive[selectedCabnum]);
+        }
       }
 
     }
@@ -239,6 +247,24 @@ public class GUIcontrol extends AnimationTimer
 
   }
 
+  private void updateStatus()
+  {
+    String door;
+    if (MapView.getInstance().cabins[selectedCPnum].door.getisDoorOpen())
+    {
+      door = "Open";
+    } else
+    {
+      door = "Close";
+    }
+    String Floor = MapView.getInstance().cabins[selectedCPnum].getCurrentFloor()+"";
+
+    String a = "Floor : " + Floor + "\n"+ "Door : " + door;
+    if (a==null) {txtStatus.setText("");}
+    else{ txtStatus.setText(a);}
+
+  }
+
   @Override
   public void handle(long now)
   {
@@ -263,8 +289,8 @@ public class GUIcontrol extends AnimationTimer
 
       if (buttonsReady) disableButtons();
       if (buttonsReady) updateToggle();
-      if(keysready) updateKeys();
-
+      if (keysready) updateKeys();
+      if (statusready) updateStatus();
 
 
     }// no code below this line on this method

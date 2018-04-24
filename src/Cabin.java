@@ -136,7 +136,7 @@ public class Cabin extends Thread
   public void move() throws InterruptedException
   {
 
-      if (currentFloor+1 > 10 || currentFloor-1 <= 1)
+      if (currentFloor+1 > 11 || currentFloor-1 < 0)
       {
          return;
       }
