@@ -5,6 +5,7 @@ import java.util.TimerTask;
 public class Cabin extends Thread {
 
     private int id ;
+    private MotionControl motion;
     private States.CabinStates cabinState;
     private ArrayList request = new ArrayList<Integer>();
     private int currentFloor=0;
@@ -30,9 +31,18 @@ public class Cabin extends Thread {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    if (request.contains(currentFloor)) {
+                    if (request.contains(motion.upComingFloor)) {
                         try {
                             executeStopped();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    else
+                    {
+                        try {
+                            continueMoving();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -70,21 +80,29 @@ public class Cabin extends Thread {
     public  void move() throws InterruptedException {
 
         if (cabinState == States.CabinStates.UP) {
-            this.sleep(500);
+            //this.sleep(500);
             System.out.println("changing current floor");
-            this.currentFloor ++;
+            motion.moveUp();
+            this.sleep(4500);
+
+            System.out.println("THe current height is ::: " + motion.currentHeight);
+            motion.setUpComingFloor(this.currentFloor + 1);
+
+            //this.currentFloor ++;
         }
 
         else {
-            this.sleep(500);
+           // this.sleep(500);
             this.currentFloor --;
         }
+
 
 
     }
 
     public  void executeStopped() throws InterruptedException {
-
+        motion.stop();
+        this.currentFloor = motion.upComingFloor;
         System.out.println("Stopped Cabin " + id + "at floor " + getCurrentFloor());
         synchronized (door){
             door.changeStoppedState();
@@ -92,6 +110,27 @@ public class Cabin extends Thread {
         }
         request.remove((Integer) currentFloor);
 
+    }
+
+    public void continueMoving () throws InterruptedException{
+        System.out.println("The descision is not to stop. Hence, moving continues ::");
+        if (cabinState == States.CabinStates.UP) {
+            System.out.println("changing current floor");
+
+            motion.moveContinue();
+            this.sleep(4500);
+            this.currentFloor ++;
+
+            System.out.println("THe current height is ::: " + motion.currentHeight);
+            motion.setUpComingFloor(this.currentFloor + 1);
+
+            //this.currentFloor ++;
+        }
+
+        else {
+            // this.sleep(500);
+            this.currentFloor --;
+        }
 
     }
 
@@ -99,6 +138,7 @@ public class Cabin extends Thread {
         this.id = id;
         this.cabinState = States.CabinStates.Ideal;
         this.currentFloor = 1;
+        motion = new MotionControl();
         this.door = new DoorControl();
         door.start();
     }
