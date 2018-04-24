@@ -22,7 +22,7 @@ public class DoorControl extends Thread {
 
     public  boolean getisDoorOpen() {return this.isStopped;}
 
-    public  int getOpenPercentage() {return this.openPercentage;}
+    public  int getOpenPercentage() {  return this.openPercentage;}
 
 
 
