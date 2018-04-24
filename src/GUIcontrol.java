@@ -106,8 +106,8 @@ public class GUIcontrol extends AnimationTimer
 
   private void updateCabin(Cabin cabin, ProgressBar elev)
   {
-    int floor = cabin.getCurrentFloor();
-    elev.setLayoutY(710 - (floor * 70));
+    int floor = cabin.currentHeight;
+    elev.setLayoutY(710 - (floor));
 
     if (cabin.door.getisDoorOpen())
     {
