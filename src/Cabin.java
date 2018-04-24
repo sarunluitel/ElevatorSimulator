@@ -136,6 +136,11 @@ public class Cabin extends Thread
   public void move() throws InterruptedException
   {
 
+      if (currentFloor+1 > 10 || currentFloor-1 <= 1)
+      {
+         return;
+      }
+
 // And From your main() method or any other method
     Timer timer = new Timer();
 
@@ -157,17 +162,7 @@ public class Cabin extends Thread
     }
 
 
-    if (currentFloor > 10 || currentFloor < 0)
-    {
-      System.out.println("--------------------------------------------");
-      for (int i = 0; i < request.size(); i++)
-      {
-        int a = (int) request.get(i);
-        System.out.println("request is " + a);
-      }
-      System.out.println("CabinState is " + cabinState);
-      System.out.println("Floor is " + currentFloor);
-    }
+
 
 
   }
@@ -239,6 +234,10 @@ public class Cabin extends Thread
     this.request.clear();
     this.requestQueue.clear();
     this.addStop(1);
+  }
+
+  void clearRequest(){
+      this.request.clear();
   }
 
 }

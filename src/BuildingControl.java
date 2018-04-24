@@ -10,6 +10,9 @@ public class BuildingControl extends Thread
   ArrayList<Integer> notifyList;
   ArrayList<Integer> requestQueue;
   boolean[] key = new boolean[4];
+  int a[] = new int[2];
+
+  boolean emergency1;
 
 
   public static void main(String[] args) throws InterruptedException
@@ -27,6 +30,7 @@ public class BuildingControl extends Thread
 
       requestQueue = new ArrayList<>();
     cabins = new Cabin[4]; // run
+    emergency1 = false;
 
     //Cabin ID has to be 0,1,2,3. GUI uses this to recognize the cabins.
     cabins[0] = new Cabin(0);
@@ -109,6 +113,12 @@ public class BuildingControl extends Thread
     return Math.abs(floorNo - currentFloor) ;
   }
 
+  void reInitializeCabins(){
+    for (Cabin c: cabins){
+      c.clearRequest();
+    }
+  }
+
 
   @Override
   public void run()
@@ -138,12 +148,26 @@ public class BuildingControl extends Thread
         if (emergency) {
           for (int i = 0; i < cabins.length; i++){
             cabins[i].goToEmergency();
-            if (cabins[i].getCurrentFloor() == 1) cabins[i].door.goToEmergency();
+            if (cabins[i].getCurrentFloor() == 1 && cabins[i].getCabinState()== States.CabinStates.Ideal) cabins[i].door.goToEmergency();
+            emergency1 = true;
           }
 
+
         } else {
-          int[] a = MapView.getInstance().getFloorRequests();
+
+           a = MapView.getInstance().getFloorRequests();
           key = MapView.getInstance().getKeypressed();
+          if (emergency1){
+            System.out.println("Here -------------------------------------");
+            try {
+              Thread.sleep(5000);
+            } catch (InterruptedException e) {
+              e.printStackTrace();
+            }
+            reInitializeCabins();
+            a = null;
+            emergency1 = false;
+          }
           if (a != null) {
             System.out.println("floor  " + a[0]);
             int id = handdleRequest(a[0], a[1]);
