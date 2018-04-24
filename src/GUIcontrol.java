@@ -4,24 +4,40 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Pane;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class GUIcontrol extends AnimationTimer
 {
+
   @FXML
   private ProgressBar elev0, elev1, elev2, elev3;
 
   @FXML
-  private RadioButton rbCab0, rbCab1, rbCab2, rbCab3;
+  private RadioButton rbCab0, rbCab1, rbCab2, rbCab3, rbCP0, rbCP1, rbCP2, rbCP3;
 
   @FXML
-  private Pane cabin0;
+  private Pane cpPane, cabinPane;
 
   private Cabin[] cabins;
   private RadioButton[] selectedCabin = new RadioButton[4];
+  private RadioButton[] selectedCP = new RadioButton[4];
+
   private long lastUpdate = 0;
+
+  private int selectedCPnum = 0;
+  private int selectedCabnum = 0;
+
+  private ArrayList<HashSet> activeButtons = new ArrayList<>();
+
+  private int cabinSelection;
   private boolean DEBUG = true;
+  private boolean GUIready = false;
 
   @FXML
   void initialize()
@@ -40,8 +56,20 @@ public class GUIcontrol extends AnimationTimer
     selectedCabin[2] = rbCab2;
     selectedCabin[3] = rbCab3;
 
+    selectedCP[0] = rbCP0;
+    selectedCP[1] = rbCP1;
+    selectedCP[2] = rbCP2;
+    selectedCP[3] = rbCP3;
+
     MapView.getInstance().setSelectedCabin(selectedCabin);
     this.start();
+
+    for (int i = 0; i < 4; i++)
+    {
+      activeButtons.add(i, new HashSet());
+    }
+
+    GUIready = true;
 
   }
 
@@ -74,16 +102,6 @@ public class GUIcontrol extends AnimationTimer
     int floor = Integer.parseInt(pressed.getId().substring(6));
     MapView.getInstance().setCabinFloorRequest(floor);
 
-    for (Object o :
-        cabin0.getChildren())
-    {
-      if (o instanceof  Button){
-        Button a = (Button) o;
-        System.out.println(a.getId());
-      }
-
-    }
-
   }
 
   private void updateCabin(Cabin cabin, ProgressBar elev)
@@ -98,6 +116,28 @@ public class GUIcontrol extends AnimationTimer
     {
       elev.setProgress(1);
     }
+
+  }
+
+  @FXML
+  private void updateDisabled()
+  {
+    for (Object b : cpPane.getChildren())
+    {
+      if (b instanceof ToggleButton)
+      {
+        ToggleButton selBtn = (ToggleButton) b;
+        if (selBtn.isSelected())
+        {
+          HashSet temp = activeButtons.get(selectedCPnum);
+          System.out.println(selBtn.getId());
+          //int tempnum = Integer.parseInt(selBtn.getId().substring(5));
+        }
+      }
+
+
+    }
+
 
   }
 
@@ -117,6 +157,13 @@ public class GUIcontrol extends AnimationTimer
 
       lastUpdate = now;
 
+    }
+
+    for (int i = 0; i < 4; i++)
+    {
+      // gives position of the selected button.
+      if (selectedCabin[i].selectedProperty().get()) selectedCabnum = i;
+      if (selectedCP[i].selectedProperty().get()) selectedCPnum = i;
     }
 
   }
