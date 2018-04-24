@@ -203,7 +203,7 @@ public class BuildingControl extends Thread
 
 // And From your main() method or any other method
     Timer timer = new Timer();
-    timer.schedule(new SayHello(), 0, 500);
+    timer.schedule(new SayHello(), 0, 71);
 
 
   }

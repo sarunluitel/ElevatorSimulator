@@ -108,8 +108,9 @@ public class GUIcontrol extends AnimationTimer
   private void updateCabin(Cabin cabin, ProgressBar elev)
   {
     int floor = cabin.currentHeight;
-    elev.setLayoutY(710 - (floor));
 
+    elev.setLayoutY(710 - (floor));
+    System.out.println("here --------------- "+(1-(cabin.door.getOpenPercentage()/71.0)));
     elev.setProgress(1-(cabin.door.getOpenPercentage()/71.0));
 
 
