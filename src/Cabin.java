@@ -122,6 +122,7 @@ public class Cabin extends Thread {
         request.remove((Integer) currentFloor);
 
 
+
     }
 
     public  Cabin (int id){
@@ -170,5 +171,6 @@ public class Cabin extends Thread {
       this.request.clear();
       this.requestQueue.clear();
       this.addStop(1);
+
   }
 }

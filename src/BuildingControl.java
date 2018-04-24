@@ -9,6 +9,7 @@ public class BuildingControl extends Thread
   DoorControl[][] doors;
   ArrayList<Integer> notifyList;
   ArrayList<Integer> requestQueue;
+  boolean[] key = new boolean[4];
 
 
   public static void main(String[] args) throws InterruptedException
@@ -67,6 +68,7 @@ public class BuildingControl extends Thread
     int id = -1;
     int temp;
     for (int i = 0; i < cabins.length ; i++){
+      if (key[i]) continue;
       temp = validateCabin(floorNo,dir,i);
       System.out.println("Best Distance for cabin " + i + "  floor : " + floorNo + " dir : "+ dir + " is " + temp + " cabin is at "+ cabins[i].getCurrentFloor() + " cabin state : " + cabins[i].getCabinState());
       if (temp < bestDistance){
@@ -130,13 +132,18 @@ public class BuildingControl extends Thread
     {
       public void run() {
         boolean emergency = MapView.getInstance().getisEmergency();
+
+
+        System.out.println(key[0]);
         if (emergency) {
           for (int i = 0; i < cabins.length; i++){
             cabins[i].goToEmergency();
+            if (cabins[i].getCurrentFloor() == 1) cabins[i].door.goToEmergency();
           }
 
         } else {
           int[] a = MapView.getInstance().getFloorRequests();
+          key = MapView.getInstance().getKeypressed();
           if (a != null) {
             System.out.println("floor  " + a[0]);
             int id = handdleRequest(a[0], a[1]);
