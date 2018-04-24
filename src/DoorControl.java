@@ -47,5 +47,9 @@ public class DoorControl extends Thread {
         }
     }
 
+    void goToEmergency(){
+        this.isStopped = true;
+    }
+
 
 }
