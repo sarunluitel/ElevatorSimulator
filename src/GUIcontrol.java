@@ -7,7 +7,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Pane;
 
-import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -38,6 +37,8 @@ public class GUIcontrol extends AnimationTimer
   private int cabinSelection;
   private boolean DEBUG = true;
   private boolean buttonsReady = false;
+  private boolean[] keysActive = {false,false,false,false};
+  private boolean keysready =false;
 
   @FXML
   void initialize()
@@ -160,14 +161,30 @@ public class GUIcontrol extends AnimationTimer
   @FXML
   void setKey(Event e)
   {
+    keysready=true;
     ToggleButton b = (ToggleButton) e.getSource();
     if (b.isSelected())
     {
-      MapView.getInstance().setKey(cabinSelection, true);
+      MapView.getInstance().setKey(selectedCabnum, true);
+      keysActive[selectedCabnum]=true;
 
     } else
     {
-      MapView.getInstance().setKey(cabinSelection, false);
+      MapView.getInstance().setKey(selectedCabnum, false);
+      keysActive[selectedCabnum]=false;
+
+    }
+
+  }
+
+  private void updateKeys(){
+    for (Object o :cabinPane.getChildren())
+    {
+      if (o instanceof ToggleButton){
+        ToggleButton tb = (ToggleButton) o;
+        if(tb.getId().equalsIgnoreCase("btncabkey")){
+        tb.setSelected(keysActive[selectedCabnum]);}
+      }
 
     }
   }
@@ -246,6 +263,8 @@ public class GUIcontrol extends AnimationTimer
 
       if (buttonsReady) disableButtons();
       if (buttonsReady) updateToggle();
+      if(keysready) updateKeys();
+
 
 
     }// no code below this line on this method
