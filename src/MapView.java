@@ -69,7 +69,6 @@ public class MapView
   {
     this.cabinfloorRequest = b;
     int[] a = {this.cabinfloorRequest, this.getSelectedCabin()};
-    System.out.println("floor " + a[0] + " fom cabin "+ a[1]);
   }
 
   int[] getCabinFloorRequest()

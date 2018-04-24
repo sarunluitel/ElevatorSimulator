@@ -74,6 +74,17 @@ public class BuildingControl extends Thread
         id = i;
       }
     }
+
+    if (bestDistance > 3 && id!=-1 && (cabins[id].getCabinState()!= States.CabinStates.Ideal)) {
+      for (int i = 0; i < cabins.length; i++){
+
+        if (cabins[i].getCabinState() == States.CabinStates.Ideal) {
+          id = i;
+          break;
+        }
+
+      }
+    }
     System.out.println(id);
     return id;
   }
@@ -92,7 +103,7 @@ public class BuildingControl extends Thread
     else{
       return Math.abs(floorNo - currentFloor) ;
     }
-    if (((floorNo - currentFloor) * dir) < 0) return 100;
+    if (((floorNo - currentFloor) * dir) <= 0) return 100;
     return Math.abs(floorNo - currentFloor) ;
   }
 
@@ -106,6 +117,7 @@ public class BuildingControl extends Thread
     cabins[1].start();
     cabins[2].start();
     cabins[3].start();
+
 
 
 
@@ -140,6 +152,12 @@ public class BuildingControl extends Thread
                 requestQueue.remove(i);
             }
             i++;
+        }
+
+        int[] b = MapView.getInstance().getCabinFloorRequest();
+        if (b!=null){
+          cabins[b[1]].addCabinStop(b[0]);
+          System.out.println("request from elevator "+ b[0] + "at floor "+ b[1]);
         }
 
       }

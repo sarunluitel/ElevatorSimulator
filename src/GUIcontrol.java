@@ -79,7 +79,6 @@ public class GUIcontrol extends AnimationTimer
     {
       if (o instanceof  Button){
         Button a = (Button) o;
-        System.out.println(a.getId());
       }
 
     }

@@ -7,6 +7,7 @@ public class Cabin extends Thread {
     private int id ;
     private States.CabinStates cabinState;
     private ArrayList request = new ArrayList<Integer>();
+    private ArrayList requestQueue = new ArrayList<Integer>();
     private int currentFloor=0;
     boolean busy = false;
     DoorControl door;
@@ -41,6 +42,11 @@ public class Cabin extends Thread {
                         cabinState = States.CabinStates.Ideal;
                         System.out.println("Cabin " + id + " is ideal now");
                     }
+                }
+                if (!requestQueue.isEmpty()){
+                    System.out.printf("adding queue");
+                    request.addAll(requestQueue);
+                    requestQueue.clear();
                 }
 
 
@@ -119,6 +125,7 @@ public class Cabin extends Thread {
    void addStop (int floorNo){
         boolean empty = request.isEmpty();
         if (request.contains(floorNo)) return;
+        if (floorNo == currentFloor) return;;
        System.out.println("request " + floorNo + " is added when currentfloor " + currentFloor);
        System.out.print("request is ");
        for (int i = 0; i < request.size(); i++){
@@ -129,6 +136,25 @@ public class Cabin extends Thread {
         request.add(floorNo);
         if (empty) changeState();
 
+
+    }
+
+
+    void addCabinStop (int floorNo){
+
+        int difference = floorNo - currentFloor;
+        System.out.println("adding request " + floorNo + " difference is " + difference);
+        if (difference < 0 && (cabinState == States.CabinStates.Down || cabinState == States.CabinStates.Ideal)){
+            request.add(floorNo);
+            return;
+        }
+
+        if (difference > 0 && (cabinState == States.CabinStates.UP || cabinState == States.CabinStates.Ideal)){
+            request.add(floorNo);
+            return;
+        }
+        System.out.println("adding at queue " + floorNo);
+        requestQueue.add(floorNo);
 
     }
 }
