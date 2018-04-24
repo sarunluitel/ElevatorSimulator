@@ -8,10 +8,26 @@ public class MapView
   volatile Cabin[] cabins;
   private boolean DEBUG = true;
   private int cabinfloorRequest =-10; // null equivalent for  no cabins selected yet.
+  private boolean isEmergency = false;
+  private boolean[] key = new boolean[4];
 
   private MapView()
   {
     //Implements singleton design pattern to communicate to and From GUI
+  }
+
+  boolean getisEmergency(){
+    return isEmergency;
+  }
+  void setisEmergency(boolean a){
+    this.isEmergency = a;
+  }
+
+  void setKey(int i, boolean a){
+    key[i]=a;
+  }
+  boolean[] getKeypressed(){
+    return key;
   }
 
   static MapView getInstance()

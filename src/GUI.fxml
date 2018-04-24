@@ -143,11 +143,6 @@
             </Text>
             <Pane fx:id="cpPane" layoutX="14.0" layoutY="84.0" prefHeight="275.0" prefWidth="237.0" style="-fx-background-color: #EBEDEF;">
                <children>
-                  <Button fx:id="bthCPKey" layoutX="103.0" layoutY="207.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 100;" text="Key">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Button>
                   <ToggleButton fx:id="btnCP01" layoutX="21.0" layoutY="18.0" mnemonicParsing="false" onAction="#updateDisabled" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" styleClass="toggle-container" stylesheets="@style.css" text="1">
                      <font>
                         <Font name="System Bold" size="19.0" />
@@ -198,6 +193,11 @@
                         <Font name="System Bold" size="19.0" />
                      </font>
                   </ToggleButton>
+                  <ToggleButton fx:id="btnCPemg" layoutX="86.0" layoutY="207.0" mnemonicParsing="false" onAction="#cpEmg" prefHeight="50.0" prefWidth="133.0" style="-fx-background-radius: 100;" styleClass="toggle-container" stylesheets="@style.css" text="Emg" textFill="#f20909">
+                     <font>
+                        <Font name="System Bold" size="27.0" />
+                     </font>
+                  </ToggleButton>
                </children>
             </Pane>
             <Text layoutX="192.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Control Panel">
@@ -224,7 +224,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="btnCabKey" layoutX="182.0" layoutY="255.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 100;" text="Key">
+            <Button fx:id="btnCabKey" layoutX="182.0" layoutY="255.0" mnemonicParsing="false" onAction="#setKey" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 100;" text="Key">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

@@ -7,9 +7,9 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Pane;
 
+import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
 
 
 public class GUIcontrol extends AnimationTimer
@@ -67,6 +67,7 @@ public class GUIcontrol extends AnimationTimer
     for (int i = 0; i < 4; i++)
     {
       activeButtons.add(i, new HashSet());
+      MapView.getInstance().setKey(i,false);
     }
 
 
@@ -140,6 +141,35 @@ public class GUIcontrol extends AnimationTimer
     }
     buttonsReady = true;
 
+  }
+
+  @FXML
+  void cpEmg(Event e)
+  {
+    ToggleButton t = (ToggleButton) e.getSource();
+    if (t.isSelected())
+    {
+      MapView.getInstance().setisEmergency(true);
+    } else
+    {
+      MapView.getInstance().setisEmergency(false);
+    }
+
+  }
+
+  @FXML
+  void setKey(Event e)
+  {
+    ToggleButton b = (ToggleButton) e.getSource();
+    if (b.isSelected())
+    {
+      MapView.getInstance().setKey(cabinSelection, true);
+
+    } else
+    {
+      MapView.getInstance().setKey(cabinSelection, false);
+
+    }
   }
 
   private void disableButtons()
