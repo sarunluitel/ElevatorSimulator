@@ -141,63 +141,63 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Pane layoutX="14.0" layoutY="84.0" prefHeight="275.0" prefWidth="237.0" style="-fx-background-color: #EBEDEF;">
+            <Pane fx:id="cpPane" layoutX="14.0" layoutY="84.0" prefHeight="275.0" prefWidth="237.0" style="-fx-background-color: #EBEDEF;">
                <children>
-                  <Button fx:id="bthCP1" layoutX="29.0" layoutY="20.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="1">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="bthCP2" layoutX="97.0" layoutY="20.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="2">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="bthCP3" layoutX="159.0" layoutY="20.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="3">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Button>
                   <Button fx:id="bthCPKey" layoutX="103.0" layoutY="207.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-radius: 100;" text="Key">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="bthCP4" layoutX="29.0" layoutY="80.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="4">
+                  <ToggleButton fx:id="btnCP01" layoutX="21.0" layoutY="18.0" mnemonicParsing="false" onAction="#updateDisabled" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" styleClass="toggle-container" stylesheets="@style.css" text="1">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="19.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="bthCP5" layoutX="97.0" layoutY="80.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="5">
+                  </ToggleButton>
+                  <ToggleButton fx:id="btnCP02" layoutX="94.0" layoutY="18.0" mnemonicParsing="false" onAction="#updateDisabled" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" styleClass="toggle-container" stylesheets="@style.css" text="2">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="19.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="bthCP6" layoutX="159.0" layoutY="80.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="6">
+                  </ToggleButton>
+                  <ToggleButton fx:id="btnCP03" layoutX="173.0" layoutY="18.0" mnemonicParsing="false" onAction="#updateDisabled" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" styleClass="toggle-container" stylesheets="@style.css" text="3">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="19.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="bthCP7" layoutX="29.0" layoutY="148.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="7">
+                  </ToggleButton>
+                  <ToggleButton fx:id="btnCP04" layoutX="21.0" layoutY="76.0" mnemonicParsing="false" onAction="#updateDisabled" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" styleClass="toggle-container" stylesheets="@style.css" text="4">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="19.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="bthCP8" layoutX="97.0" layoutY="148.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="8">
+                  </ToggleButton>
+                  <ToggleButton fx:id="btnCP05" layoutX="94.0" layoutY="76.0" mnemonicParsing="false" onAction="#updateDisabled" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" styleClass="toggle-container" stylesheets="@style.css" text="5">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="19.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="bthCP9" layoutX="159.0" layoutY="148.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" text="9">
+                  </ToggleButton>
+                  <ToggleButton fx:id="btnCP06" layoutX="173.0" layoutY="76.0" mnemonicParsing="false" onAction="#updateDisabled" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" styleClass="toggle-container" stylesheets="@style.css" text="6">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="19.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="bthCP10" layoutX="29.0" layoutY="207.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="68.0" style="-fx-background-radius: 100;" text="10">
+                  </ToggleButton>
+                  <ToggleButton fx:id="btnCP07" layoutX="18.0" layoutY="138.0" mnemonicParsing="false" onAction="#updateDisabled" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" styleClass="toggle-container" stylesheets="@style.css" text="7">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="19.0" />
                      </font>
-                  </Button>
+                  </ToggleButton>
+                  <ToggleButton fx:id="btnCP" layoutX="91.0" layoutY="138.0" mnemonicParsing="false" onAction="#updateDisabled" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" styleClass="toggle-container" stylesheets="@style.css" text="8">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </ToggleButton>
+                  <ToggleButton layoutX="170.0" layoutY="138.0" mnemonicParsing="false" onAction="#updateDisabled" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 100;" styleClass="toggle-container" stylesheets="@style.css" text="9">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </ToggleButton>
+                  <ToggleButton layoutX="18.0" layoutY="207.0" mnemonicParsing="false" onAction="#updateDisabled" prefHeight="50.0" prefWidth="57.0" style="-fx-background-radius: 100;" styleClass="toggle-container" stylesheets="@style.css" text="10">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </ToggleButton>
                </children>
             </Pane>
             <Text layoutX="192.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Control Panel">
@@ -205,7 +205,6 @@
                   <Font size="25.0" />
                </font>
             </Text>
-            <ToggleButton layoutX="269.0" layoutY="278.0" mnemonicParsing="false" text="ToggleButton" />
          </children>
       </Pane>
       <Pane fx:id="cabin0" layoutX="727.0" layoutY="392.0" prefHeight="320.0" prefWidth="416.0" style="-fx-background-color: #EBEDEF;">
