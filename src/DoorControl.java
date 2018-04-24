@@ -1,12 +1,15 @@
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class DoorControl extends Thread {
     private boolean openState;
     private volatile boolean isStopped;
-    private boolean isDoorOpen;
+    private boolean emergency;
+    private int openPercentage = 0;
 
     public DoorControl (){
-        isDoorOpen =false;
+        emergency =false;
         isStopped = false;
         ArrayList request = new ArrayList<Integer>();
     }
@@ -19,24 +22,40 @@ public class DoorControl extends Thread {
 
     public  boolean getisDoorOpen() {return this.isStopped;}
 
+    public  int getOpenPercentage() {return this.openPercentage;}
+
+
+
     public synchronized void open() throws InterruptedException {
+        Timer timer = new Timer();
 
+
+        timer.schedule(new DoorMotor(States.DoorStates.Opening), 0, 35);
+        Thread.sleep(2500);
+        timer.cancel();
         System.out.println("Door Opened");
-        Thread.sleep(4000);
 
-        System.out.println("Door Closed");
+         if (!emergency) {
+             timer = new Timer();
+             timer.schedule(new DoorMotor(States.DoorStates.Closing), 0, 35);
+             Thread.sleep(2500);
+             timer.cancel();
+             System.out.println("Door Closed");
+         }
     }
 
     @Override
     public  void run() {
         while (true){
             if (isStopped) {
-                isDoorOpen=true;
                 try {
                     synchronized (this){
                         open();
-                        changeStoppedState();
-                        notify();
+                        if (!emergency) {
+                            System.out.println("here-----------------------");
+                            changeStoppedState();
+                            notify();
+                        }
                     }
 
 
@@ -48,7 +67,40 @@ public class DoorControl extends Thread {
     }
 
     void goToEmergency(){
+        System.out.println("Opening executed ----------------------------------------");
         this.isStopped = true;
+        this.emergency = true;
+    }
+
+    void removeFromEmergency(){
+        System.out.println("Opening deexecuted ----------------------------------------");
+        this.emergency = false;
+    }
+
+    class DoorMotor extends TimerTask
+    {
+        private States.DoorStates motorState;
+
+        DoorMotor(States.DoorStates s)
+        {
+            this.motorState = s;
+
+        }
+
+        public void run()
+        {
+            if (this.motorState == States.DoorStates.Opening)
+            {
+
+                openPercentage += 1;
+            } else if (this.motorState == States.DoorStates.Closing)
+            {
+
+                openPercentage += -1;
+            }
+
+
+        }
     }
 
 

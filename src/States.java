@@ -15,4 +15,11 @@ public class States {
         STOP
     }
 
+    enum DoorStates {
+        Opening,
+        Closing,
+        Open,
+        Closed
+    }
+
 }
