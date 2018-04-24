@@ -1,0 +1,7 @@
+.toggle-container {
+    -fx-background-color: #90EE90;
+}
+
+.toggle-container:selected {
+    -fx-background-color: #ffb2b2;
+}

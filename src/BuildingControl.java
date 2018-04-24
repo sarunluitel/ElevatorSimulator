@@ -35,6 +35,8 @@ public class BuildingControl extends Thread
 
 
 
+
+
     MapView.getInstance().setElevators(cabins);
 
     doors = new DoorControl[10][2];
@@ -66,10 +68,21 @@ public class BuildingControl extends Thread
     int temp;
     for (int i = 0; i < cabins.length ; i++){
       temp = validateCabin(floorNo,dir,i);
-      System.out.println("Best Distance for cabin " + i + "  floor : " + floorNo + " is " + temp + " cabin is at "+ cabins[i].getCurrentFloor());
+      System.out.println("Best Distance for cabin " + i + "  floor : " + floorNo + " dir : "+ dir + " is " + temp + " cabin is at "+ cabins[i].getCurrentFloor() + " cabin state : " + cabins[i].getCabinState());
       if (temp < bestDistance){
         bestDistance = temp;
         id = i;
+      }
+    }
+
+    if (bestDistance > 3 && id!=-1 && (cabins[id].getCabinState()!= States.CabinStates.Ideal)) {
+      for (int i = 0; i < cabins.length; i++){
+
+        if (cabins[i].getCabinState() == States.CabinStates.Ideal) {
+          id = i;
+          break;
+        }
+
       }
     }
     System.out.println(id);
@@ -90,7 +103,7 @@ public class BuildingControl extends Thread
     else{
       return Math.abs(floorNo - currentFloor) ;
     }
-    if (((floorNo - currentFloor) * dir) < 0) return 100;
+    if (((floorNo - currentFloor) * dir) <= 0) return 100;
     return Math.abs(floorNo - currentFloor) ;
   }
 
@@ -104,6 +117,7 @@ public class BuildingControl extends Thread
     cabins[1].start();
     cabins[2].start();
     cabins[3].start();
+
 
 
 
@@ -124,7 +138,6 @@ public class BuildingControl extends Thread
             cabins[id].addStop(a[0]);
           }
           else{
-            System.out.println("--------------------------------------------------------------------------------------");
               requestQueue.add(a[0]);
               requestQueue.add(a[1]);
           }
@@ -134,11 +147,17 @@ public class BuildingControl extends Thread
             int id = handdleRequest(requestQueue.get(i),requestQueue.get(i+1));
             if (id>=0){
                 cabins[id].addStop(requestQueue.get(i));
-              System.out.println("Length of requestQueue is " + requestQueue.size() + "and value of i is " + i);
+              //System.out.println("Length of requestQueue is " + requestQueue.size() + "and value of i is " + i);
                 requestQueue.remove(i);
                 requestQueue.remove(i);
             }
             i++;
+        }
+
+        int[] b = MapView.getInstance().getCabinFloorRequest();
+        if (b!=null){
+          cabins[b[1]].addCabinStop(b[0]);
+          System.out.println("request from elevator "+ b[0] + "at floor "+ b[1]);
         }
 
       }
@@ -146,7 +165,7 @@ public class BuildingControl extends Thread
 
 // And From your main() method or any other method
     Timer timer = new Timer();
-    timer.schedule(new SayHello(), 0, 500);
+    timer.schedule(new SayHello(), 0, 50);
 
 
   }

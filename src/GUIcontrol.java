@@ -4,20 +4,40 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.Pane;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class GUIcontrol extends AnimationTimer
 {
-  @FXML
-  ProgressBar elev0, elev1, elev2, elev3;
 
   @FXML
-  RadioButton rbCab0, rbCab1, rbCab2, rbCab3;
+  private ProgressBar elev0, elev1, elev2, elev3;
+
+  @FXML
+  private RadioButton rbCab0, rbCab1, rbCab2, rbCab3, rbCP0, rbCP1, rbCP2, rbCP3;
+
+  @FXML
+  private Pane cpPane, cabinPane;
 
   private Cabin[] cabins;
   private RadioButton[] selectedCabin = new RadioButton[4];
+  private RadioButton[] selectedCP = new RadioButton[4];
+
   private long lastUpdate = 0;
-  private boolean DEBUG =true;
+
+  private int selectedCPnum = 0;
+  private int selectedCabnum = 0;
+
+  private ArrayList<HashSet> activeButtons = new ArrayList<>();
+
+  private int cabinSelection;
+  private boolean DEBUG = true;
+  private boolean buttonsReady = false;
 
   @FXML
   void initialize()
@@ -29,13 +49,26 @@ public class GUIcontrol extends AnimationTimer
       // waits until it gets all elevator's references.
       this.cabins = MapView.getInstance().getElevators();
     }
+
+    // Give map view pointer to  array of radio Buttons
     selectedCabin[0] = rbCab0;
     selectedCabin[1] = rbCab1;
     selectedCabin[2] = rbCab2;
     selectedCabin[3] = rbCab3;
 
+    selectedCP[0] = rbCP0;
+    selectedCP[1] = rbCP1;
+    selectedCP[2] = rbCP2;
+    selectedCP[3] = rbCP3;
+
     MapView.getInstance().setSelectedCabin(selectedCabin);
     this.start();
+
+    for (int i = 0; i < 4; i++)
+    {
+      activeButtons.add(i, new HashSet());
+    }
+
 
   }
 
@@ -61,11 +94,13 @@ public class GUIcontrol extends AnimationTimer
   }
 
   @FXML
-  private void cabinFlorRequest(Event e){
+  private void cabinFlorRequest(Event e)
+  {
     Button pressed = (Button) e.getSource();
 
     int floor = Integer.parseInt(pressed.getId().substring(6));
     MapView.getInstance().setCabinFloorRequest(floor);
+
   }
 
   private void updateCabin(Cabin cabin, ProgressBar elev)
@@ -79,6 +114,78 @@ public class GUIcontrol extends AnimationTimer
     } else
     {
       elev.setProgress(1);
+    }
+
+  }
+
+  @FXML
+  private void updateDisabled()
+  {
+    activeButtons.get(selectedCPnum).clear();
+    for (Object b : cpPane.getChildren())
+    {
+      if (b instanceof ToggleButton)
+      {
+        ToggleButton selBtn = (ToggleButton) b;
+        if (selBtn.isSelected())
+        {
+          int tempnum = Integer.parseInt(selBtn.getId().substring(5));
+
+          activeButtons.get(selectedCPnum).add(tempnum);
+          System.out.println();
+        }
+      }
+
+
+    }
+    buttonsReady = true;
+
+  }
+
+  private void disableButtons()
+  {
+    for (Object o : cabinPane.getChildren())
+    {
+      if (o instanceof Button)
+      {
+        Button b = (Button) o;
+        if (!b.getId().equalsIgnoreCase("btnCabKey"))
+        {
+          int temp = Integer.parseInt(b.getId().substring(6));
+          if (activeButtons.get(selectedCabnum).contains(temp))
+          {
+            b.setDisable(true);
+
+          } else
+          {
+            b.setDisable(false);
+          }
+        }
+      }
+
+    }
+
+  }
+
+  private void updateToggle()
+  {
+    for (Object o : cpPane.getChildren())
+    {
+      if (o instanceof ToggleButton)
+      {
+        ToggleButton b = (ToggleButton) o;
+        int temp = Integer.parseInt(b.getId().substring(6));
+        if (activeButtons.get(selectedCPnum).contains(temp))
+        {
+          b.setSelected(true);
+
+        } else
+        {
+          b.setSelected(false);
+        }
+
+      }
+
     }
 
   }
@@ -98,8 +205,19 @@ public class GUIcontrol extends AnimationTimer
       }
 
       lastUpdate = now;
+      for (int i = 0; i < 4; i++)
+      {
+        // gives position of the selected button.
+        if (selectedCabin[i].selectedProperty().get()) selectedCabnum = i;
+        if (selectedCP[i].selectedProperty().get()) selectedCPnum = i;
+      }
 
-    }
+      if (buttonsReady) disableButtons();
+      if (buttonsReady) updateToggle();
 
+
+    }// no code below this line on this method
   }
+
+
 }
